@@ -1,12 +1,13 @@
 import React from 'react';
 import 'typeface-roboto';
-import {Box, AppBar, Grid, Container} from '@material-ui/core';
-import ChatBox from './Chat/ChatBox';
+import {Box, Grid} from '@material-ui/core';
+import NavBar from './Components/NavBar';
+import ChatBox from './Components/ChatBox';
 
 function Main() {
   return (
     <Box>
-      <AppBar position="static">StatHunt</AppBar>
+      <NavBar />
       <Grid container spacing={2}>
         <Grid container item xs={4} justify={"center"}>
           <ChatBox />
