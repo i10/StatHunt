@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { TextField, CardHeader, Card, CardContent, CardActions} from '@material-ui/core';
 
 class ChatBox extends Component{
     constructor(props){
@@ -7,9 +8,18 @@ class ChatBox extends Component{
     }
     
     render(){
-
         return(
-            <div><p>ChatWindow is here</p></div>
+            <Card>
+                <CardHeader>Hunter</CardHeader>
+                <CardContent></CardContent>
+                <CardActions>
+                        <form noValidate autoComplete="off">
+                            <TextField id="outlined-basic" variant="outlined"/>
+                        </form>
+                </CardActions>
+            </Card>
         )
     }
 }
+
+export default ChatBox;
