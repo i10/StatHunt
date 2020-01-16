@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Blockly from 'node-blockly/browser'; 
 
 import BlocklyDrawer, { Block, Category } from 'react-blockly-drawer';
+import { BlocklyWrapper } from './Blockly';
 
 const helloWorld =  {
   name: 'HelloWorld',
@@ -27,29 +28,32 @@ const helloWorld =  {
 };
 
 export default class BlocklyWindow extends Component{
-
+  
   render(){
-      return <BlocklyDrawer
-      style={{height:'95%'}}
-      tools={[helloWorld]}
-      onChange={(code, workspace) => {
-        console.log(code, workspace);
-      }}
-      appearance={
-        {
-          categories: {
-            Demo: {
-              colour: '270',
-            },
-          },
-        }
-      }
-    >
-      <Category name="Variables" custom="VARIABLE" />
-      <Category name="Values">
-        <Block type="math_number" />
-        <Block type="text" />
-      </Category>
-    </BlocklyDrawer>
+    return <BlocklyWrapper />
   }
+  // render(){
+  //     return <BlocklyDrawer
+  //     style={{height:'95%'}}
+  //     tools={[helloWorld]}
+  //     onChange={(code, workspace) => {
+  //       console.log(code, workspace);
+  //     }}
+  //     appearance={
+  //       {
+  //         categories: {
+  //           Demo: {
+  //             colour: '270',
+  //           },
+  //         },
+  //       }
+  //     }
+  //   >
+  //     <Category name="Variables" custom="VARIABLE" />
+  //     <Category name="Values">
+  //       <Block type="math_number" />
+  //       <Block type="text" />
+  //     </Category>
+  //   </BlocklyDrawer>
+  // }
 }
