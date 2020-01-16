@@ -5,7 +5,7 @@ import {BlocklyWindow} from '../ExpDesign';
 export default class DesignContainer extends Component{
     render(){
         return <Paper variant="outlined">
-            <BlocklyWindow />
+            <BlocklyWindow style={{height:'100%'}}/>
         </Paper>
     }
 }
