@@ -3,6 +3,6 @@ import ReactBlockly from 'react-blockly';
 
 export default class BlocklyWindow extends Component{
     render(){
-        return <Fragment><ReactBlockly /></Fragment>;
+        return <Fragment>{ReactBlockly.BlocklyEditor}</Fragment>;
     }
 }

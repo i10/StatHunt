@@ -22,18 +22,15 @@ export default class App extends Component{
   render(){
       return <Fragment>
       <Bar onViewButtonClick={this.changeView}/>
+      <ChatContainer/>
       <Grid container>
-        <Grid item sm={4}>
-          <ChatContainer/>
-        </Grid>
         {(()=>{
-          console.log(this.state.view);
           if(this.state.view === 0){
-            return <Grid item sm={8}>
+            return <Grid item sm={12} style={{height:'100vh'}}>
               <DesignContainer />
             </Grid>
           }
-          return <Grid item sm={8}>
+          return <Grid item sm={12} style={{height:'100vh'}}>
             <DataContainer />
           </Grid>
         })()}
