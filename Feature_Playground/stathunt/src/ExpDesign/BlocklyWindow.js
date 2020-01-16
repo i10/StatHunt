@@ -23,12 +23,7 @@ const helloWorld =  {
         tooltip: 'Says Hello',
       });
     },
-  },
-  generator: (block) => {
-    const message = `'${block.getFieldValue('NAME')}'` || '\'\'';
-    const code = `console.log('Hello ${message}')`;
-    return [code, Blockly.JavaScript.ORDER_MEMBER];
-  },
+  }
 };
 
 export default class BlocklyWindow extends Component{

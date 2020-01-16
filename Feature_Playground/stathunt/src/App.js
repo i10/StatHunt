@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import 'typeface-roboto';
-import {ChatContainer, Bar, DesignContainer, DataContainer} from './Layout';
-import { Grid } from '@material-ui/core';
+import {ChatContainer, NavBar, DesignContainer, DataContainer} from './Layout';
+import { Grid, LinearProgress } from '@material-ui/core';
 
 export default class App extends Component{
   constructor(props){
@@ -21,7 +21,8 @@ export default class App extends Component{
 
   render(){
       return <Fragment>
-      <Bar onViewButtonClick={this.changeView}/>
+      <NavBar onViewButtonClick={this.changeView}/>
+      <LinearProgress variant="determinate" value={60} color="secondary"/>
       <ChatContainer/>
       <Grid container>
         {(()=>{

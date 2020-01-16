@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppBar, Toolbar, Typography, Button} from '@material-ui/core';
 
-export default class Bar extends Component{
+export default class NavBar extends Component{
     constructor(props){
         super(props)
     }
