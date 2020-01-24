@@ -27,11 +27,11 @@ export default class App extends Component{
       <Grid container>
         {(()=>{
           if(this.state.view === 0){
-            return <Grid item sm={12} style={{height:'100vh'}}>
+            return <Grid item sm={12} style={{height:'100%'}}>
               <DesignContainer />
             </Grid>
           }
-          return <Grid item sm={12} style={{height:'100vh'}}>
+          return <Grid item sm={12} style={{height:'100vh', margin: '50px'}}>
             <DataContainer />
           </Grid>
         })()}
