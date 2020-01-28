@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <script src="google-block/blockly_compressed.js"></script>
+        <script src="google-block/blocks_compressed.js"></script>
+        <script src="google-block/msg/js/en.js"></script>
+        <script src="custom_blocks.js"></script>
+    </head>
+    <body style="height: 100%">
+        <div id="blocklyArea" style="height: 100%; width: 100%;">
+            <div id="blocklyDiv" style="position: absolute">
+            </div>
+        </div>
+        <xml id="toolbox" style="display: none">
+            <block type="experiment_design"></block>
+            <block type="variable"></block>
+          </xml>
+          <script>
+              Blockly.Blocks['experiment_design'] = {
+                init: function() {
+                    this.appendDummyInput()
+                        .appendField(new Blockly.FieldTextInput("Design Name"), "designName")
+                        .appendField(new Blockly.FieldColour("#3333ff"), "designColor");
+                    this.appendDummyInput()
+                        .appendField("Goal")
+                        .appendField(new Blockly.FieldTextInput("The goal of this experiment is..."), "NAME");
+                    this.appendDummyInput()
+                        .appendField("Hypothesis")
+                        .appendField(new Blockly.FieldTextInput("The hypothesis...."), "NAME");
+                    this.appendStatementInput("independantVariables")
+                        .setCheck(null)
+                        .appendField("Independant Variables");
+                    this.appendStatementInput("dependantVariables")
+                        .setCheck(null)
+                        .appendField("Dependant Variables");
+                    this.appendDummyInput()
+                        .appendField("Procedure")
+                        .appendField(new Blockly.FieldTextInput("First take all of the ducks and add them...."), "NAME");
+                    this.appendDummyInput()
+                        .appendField("Design:")
+                        .appendField(new Blockly.FieldDropdown([["between-subjects","OPTIONNAME"], ["within-subjects","OPTIONNAME"], ["unknown","OPTIONNAME"]]), "NAME")
+                        .appendField("Participants:")
+                        .appendField(new Blockly.FieldNumber(0, 0), "NAME");
+                    this.setInputsInline(false);
+                    this.setColour(135);
+                    this.setTooltip("");
+                    this.setHelpUrl("");
+                }
+            };
+            Blockly.Blocks['variable'] = {
+            init: function() {
+                this.appendDummyInput()
+                    .appendField("Name:")
+                    .appendField(new Blockly.FieldTextInput("Name"), "name")
+                    .appendField("Measurement:")
+                    .appendField(new Blockly.FieldDropdown([["Nominal","NOMINAL"], ["Ordinal","ORDINAL"], ["Interval","INTERVAL"], ["Ratio","RATIO"]]), "SCALES");
+                this.appendDummyInput()
+                    .appendField("Additional Info.:")
+                    .appendField(new Blockly.FieldTextInput("Type"), "NAME");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip("");
+                this.setHelpUrl("");
+                }
+            };
+
+              var blocklyArea = document.getElementById('blocklyArea');
+              var blocklyDiv = document.getElementById('blocklyDiv');
+              var workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+              var onresize = function(e) {
+                  var element = blocklyArea;
+                  var x = 0;
+                  var y = 0;
+                  do {
+                      x += element.offsetLeft;
+                      y += element.offsetTop;
+                      element = element.offsetParent;
+                  } while(element);
+                  blocklyDiv.style.left = x + 'px';
+                blocklyDiv.style.top = y + 'px';
+                blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+                blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+                Blockly.svgResize(workspace);
+              }
+              window.addEventListener('resize', onresize, false);
+              onresize();
+              Blockly.svgResize(workspace);
+          </script>
+    </body>
+</html>

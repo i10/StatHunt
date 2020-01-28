@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/styles';
 
 import ChatBot from 'react-simple-chatbot';
 
@@ -11,12 +10,12 @@ export default class ChatWindow extends Component{
         var steps = [];
         var step = 0;
         for (var r = 0; r < input.length; r++){
-            if(input[r] == '&' || input[r] =='/'){
+            if(input[r] === '&' || input[r] ==='/'){
                 steps[step] = {id: String(step), message: input.slice(l, r), trigger: String(step+1)};
                 l = r+1;
                 step++;
-                if(input[r] == '&'){
-                    steps[step] = {id: String(step), user: true, trigger: (r +1 == input.length) ? String(step) : String(step+1)};
+                if(input[r] === '&'){
+                    steps[step] = {id: String(step), user: true, trigger: (r +1 === input.length) ? String(step) : String(step+1)};
                     step++;
                 }
             }
@@ -29,7 +28,7 @@ export default class ChatWindow extends Component{
 
     render(){
         return(
-            <ChatBot hideBotAvatar = {true} hideUserAvatar = {true} steps = {this.state.steps} width={"35%"} floating={true} />
+            <ChatBot hideBotAvatar = {true} hideUserAvatar = {true} steps = {this.state.steps} width={"35%"} floating={true} opened={true}/>
         )
     }
 }

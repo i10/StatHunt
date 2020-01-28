@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import {AppBar, Toolbar, Typography, Button} from '@material-ui/core';
 
 export default class NavBar extends Component{
-    constructor(props){
-        super(props)
-    }
-
     render(){
         return <AppBar position="static">
             <Toolbar variant="dense">
