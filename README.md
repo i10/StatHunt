@@ -11,7 +11,7 @@ StatHunt is a web application for that aids novice researchers seek correct stat
 
 ## Installation
 
-In the source code folder, run `npm install`. (This will take a while.)
+In the stathunt folder, run `npm install`. (This might take a while.)
 
 ## Running
 
