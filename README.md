@@ -1,12 +1,19 @@
 # StatHunt
-A Google Chrome plugin that helps users to specify information required to ask questions on Q&amp;A websites. 
 
-## Installing
-Download the stathunt project folder, inside of it run
-```
-npm install
-```
-Afterwards start the server on your local environment with
-```
-npm start
-```
+StatHunt is a web application for that aids novice researchers seek correct statistical procedures.
+
+
+## Requirements
+
+* Node.js version 13.1.0. The easiest way to do this is to use [nvm](https://github.com/creationix/nvm#installation-and-update)
+  * To install Node.js 13.1.0, use the command `nvm install 13.1.0`
+  * To switch to Node.js 13.1.0, use the command `nvm use 13.1.0`
+
+## Installation
+
+In the source code folder, run `npm install`. (This will take a while.)
+
+## Running
+
+From now on, you can start StatHunt by running: `npm start`
+
