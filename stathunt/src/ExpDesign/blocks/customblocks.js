@@ -28,50 +28,78 @@
 import * as Blockly from 'blockly/core';
 
 Blockly.Blocks['experiment_design'] = {
-  init: function() {
-      this.appendDummyInput()
-          .appendField(new Blockly.FieldTextInput("Design Name"), "designName")
-          .appendField(new Blockly.FieldColour("#3333ff"), "designColor");
-      this.appendDummyInput()
-          .appendField("Goal")
-          .appendField(new Blockly.FieldTextInput("The goal of this experiment is..."), "NAME");
-      this.appendDummyInput()
-          .appendField("Hypothesis")
-          .appendField(new Blockly.FieldTextInput("The hypothesis...."), "NAME");
-      this.appendStatementInput("independantVariables")
-          .setCheck(null)
-          .appendField("Independant Variables");
-      this.appendStatementInput("dependantVariables")
-          .setCheck(null)
-          .appendField("Dependant Variables");
-      this.appendDummyInput()
-          .appendField("Procedure")
-          .appendField(new Blockly.FieldTextInput("First take all of the ducks and add them...."), "NAME");
-      this.appendDummyInput()
-          .appendField("Design:")
-          .appendField(new Blockly.FieldDropdown([["between-subjects","OPTIONNAME"], ["within-subjects","OPTIONNAME"], ["unknown","OPTIONNAME"]]), "NAME")
-          .appendField("Participants:")
-          .appendField(new Blockly.FieldNumber(0, 0), "NAME");
-      this.setInputsInline(false);
-      this.setColour(135);
-      this.setTooltip("");
-      this.setHelpUrl("");
-  }
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("Design Name"), "designName")
+            .appendField(new Blockly.FieldColour("#3333ff"), "designColor");
+        this.appendDummyInput()
+            .appendField("Goal")
+            .appendField(new Blockly.FieldTextInput("...."), "goal");
+        this.appendDummyInput()
+            .appendField("Independant Variables");
+        this.appendStatementInput("independantVariables")
+            .setCheck(null);
+        this.appendDummyInput()
+            .appendField("Dependant Variables");
+        this.appendStatementInput("dependantVariables")
+            .setCheck(null);
+        this.appendDummyInput()
+            .appendField("Hypothesis")
+            .appendField(new Blockly.FieldTextInput("..."), "hypothesis");
+        this.appendDummyInput()
+            .appendField("Procedure")
+            .appendField(new Blockly.FieldTextInput("..."), "NAME");
+        this.appendDummyInput()
+            .appendField("Design:")
+            .appendField(new Blockly.FieldDropdown([["unknown", "unknown"], ["within-subjects", "within"], ["between-subjects", "between"]]), "BETWEENWITHIN")
+            .appendField("Participants:")
+            .appendField(new Blockly.FieldNumber(0, 0), "PARTICIPANTS");
+        this.setInputsInline(false);
+        this.setColour(180);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
 };
+Blockly.Blocks['dependant_variable'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("DV Name"), "NAME");
+        this.appendDummyInput()
+            .appendField("Scale of Measurement")
+            .appendField(new Blockly.FieldDropdown([["Nominal", "NOMINAL"], ["Ordinal", "ORDINAL"], ["Interval", "INTERVAL"], ["Ratio", "RATIO"]]), "SOM");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(200);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+Blockly.Blocks['independant_variable'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("IV Name"), "NAME");
+        this.appendStatementInput("NAME")
+            .setCheck(null);
+        this.appendDummyInput()
+            .appendField("Additional Info.")
+            .appendField(new Blockly.FieldTextInput("..."), "INFO");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['variable'] = {
-init: function() {
-  this.appendDummyInput()
-      .appendField("Name:")
-      .appendField(new Blockly.FieldTextInput("Name"), "name")
-      .appendField("Measurement:")
-      .appendField(new Blockly.FieldDropdown([["Nominal","NOMINAL"], ["Ordinal","ORDINAL"], ["Interval","INTERVAL"], ["Ratio","RATIO"]]), "SCALES");
-  this.appendDummyInput()
-      .appendField("Additional Info.:")
-      .appendField(new Blockly.FieldTextInput("Type"), "NAME");
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(230);
-  this.setTooltip("");
-  this.setHelpUrl("");
-  }
-};
+    init: function() {
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldTextInput("IV Value"), "NAME");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(140);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };
+  
