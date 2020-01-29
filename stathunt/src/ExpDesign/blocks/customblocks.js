@@ -31,7 +31,6 @@ Blockly.Blocks['experiment_design'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(new Blockly.FieldTextInput("Design Name"), "designName")
-            .appendField(new Blockly.FieldColour("#3333ff"), "designColor");
         this.appendDummyInput()
             .appendField("Goal")
             .appendField(new Blockly.FieldTextInput("...."), "goal");

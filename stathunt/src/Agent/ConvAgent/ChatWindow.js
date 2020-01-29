@@ -28,7 +28,7 @@ export default class ChatWindow extends Component{
 
     render(){
         return(
-            <ChatBot hideBotAvatar = {true} hideUserAvatar = {true} steps = {this.state.steps} width={"35%"} floating={true} opened={true}/>
+            <ChatBot style={{width:'32%'}} floating={true} hideBotAvatar = {true} hideUserAvatar = {true}  steps = {this.state.steps} />
         )
     }
 }
