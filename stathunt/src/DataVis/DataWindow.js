@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 // import MUIDatatable from 'mui-datatables';
 import { Grid } from '@material-ui/core';
 import MaterialTable from 'material-table';
-
-const mui_columns = ["part_id", "keyboard_layout", "task_completion_time"];
+const mui_columns = ["Participant", "Input Method", "Task Completion Time (s)"];
 const mt_columns = (function () {
     var out = [];
     for (var x in mui_columns) {
@@ -36,7 +35,7 @@ var mt_data = function () {
     for (var i = 0; i < 1000; i++) {
         var row = {};
         row[mui_columns[0]] = (gen[0]);
-        row[mui_columns[1]] = (gen[1] ? "QWERTY" : "QWERTZ");
+        row[mui_columns[1]] = (gen[1] ? "Finger" : "Stylus");
         row[mui_columns[2]] = Math.floor(Math.random() * 70) + 10;
         gen[0]++;
         gen[1] = !gen[1];
