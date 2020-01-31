@@ -86,13 +86,67 @@ export default class ChatWindow extends Component {
                     if(value[0] === 'b'){
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "between");
                     }
-                    else{
+                    else if(value[0] === 'w'){
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "within");
+                    }else{
+                        this.props.updateWorkspaceXml("BETWEENWITHIN", "unknown")
                     }
                     return true;
                 },
-                "trigger": "12"
-            }
+                "trigger": "13"
+            },
+            {
+                "id": "13",
+                "message": "Could you briefly explain the procedure of your experiment?",
+                "trigger": "procedure"
+            },
+            {
+                "id": "procedure",
+                "user": true,
+                validator: (value) => {
+                    this.props.updateWorkspaceXml("procedure", value);
+                    return true;
+                },
+                "trigger": "14"
+            },
+            {
+                "id": "14",
+                "message": "How many participants are going to take part in your experiment?",
+                "trigger": "participants"
+            },
+            {
+                "id": "participants",
+                "user": true,
+                validator: (value) => {
+                    this.props.updateWorkspaceXml("participants", value);
+                    return true;
+                },
+                "end": true
+            },
+            {
+                "id": "15",
+                "message": "Now let's get to the experiment variables.",
+                "trigger": "16"
+            },
+            {
+                "id": "16",
+                "message": "What's the name of your independent variable?",
+                "trigger": "independent_variables"
+            },
+            {
+                "id": "independent_variables",
+                "user": true,
+                validator: (value) => {
+                    this.props.updateWorkspaceXml("independent_variables", value);
+                    return true;
+                },
+                "trigger": "18"
+            },
+            {
+                "id": "18",
+                "message": "Dependant Variable Question",
+                "trigger": "participants"
+            },
         ]
 
         this.state = {

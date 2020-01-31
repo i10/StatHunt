@@ -47,12 +47,12 @@ Blockly.Blocks['experiment_design'] = {
             .appendField(new Blockly.FieldTextInput("..."), "hypothesis");
         this.appendDummyInput()
             .appendField("Procedure")
-            .appendField(new Blockly.FieldTextInput("..."), "NAME");
+            .appendField(new Blockly.FieldTextInput("..."), "procedure");
         this.appendDummyInput()
             .appendField("Design:")
             .appendField(new Blockly.FieldDropdown([["unknown", "unknown"], ["within-subjects", "within"], ["between-subjects", "between"]]), "BETWEENWITHIN")
             .appendField("Participants:")
-            .appendField(new Blockly.FieldNumber(0, 0), "PARTICIPANTS");
+            .appendField(new Blockly.FieldNumber(0, 0), "participants");
         this.setInputsInline(false);
         this.setColour(120);
         this.setTooltip("");
