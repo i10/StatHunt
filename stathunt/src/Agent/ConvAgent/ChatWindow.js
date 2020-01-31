@@ -10,7 +10,7 @@ export default class ChatWindow extends Component {
             {
                 "id": "0",
                 "message": "Hello, welcome to StatHunt! I’m here to help you find a correct statistical procedure for your experiment.",
-                "trigger": "1"
+                "trigger": "independent_variables"
             },
             {
                 "id": "1",
@@ -121,7 +121,8 @@ export default class ChatWindow extends Component {
                     this.props.updateWorkspaceXml("participants", value);
                     return true;
                 },
-                "end": true
+                "trigger": "15",
+                // "end": true
             },
             {
                 "id": "15",
@@ -144,9 +145,26 @@ export default class ChatWindow extends Component {
             },
             {
                 "id": "18",
-                "message": "Dependant Variable Question",
-                "trigger": "participants"
+                "message": "What are the different values '{previousValue}' can take?",
+                "trigger": "19"
             },
+            {
+                "id": "19",
+                "message": "Please send them over in a comma separated format. e.g. 'red, blue, purple'",
+                "trigger": "iv_values"
+            },
+            {
+                "id": "iv_values",
+                "user": true,
+                validator: (value) => {
+                    var values = value.split(',');
+                    for(var i in values){
+                        this.props.updateWorkspaceXml("iv_values", values[i]);
+                    }
+                    return true
+                },
+                "end": true,
+            }
         ]
 
         this.state = {

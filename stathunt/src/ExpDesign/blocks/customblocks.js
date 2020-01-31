@@ -77,7 +77,7 @@ Blockly.Blocks['independent_variable'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(new Blockly.FieldTextInput("IV name"), "NAME");
-        this.appendStatementInput("NAME")
+        this.appendStatementInput("variables")
             .setCheck(null);
         this.appendDummyInput()
             .appendField("Additional info.")
