@@ -10,14 +10,19 @@ export default class App extends Component {
     this.state = {
       view: 0
     }
-
+    this.designContainer = React.createRef();
     this.changeView = this.changeView.bind(this);
+    this.updateWorkspaceXml = this.updateWorkspaceXml.bind(this);
   }
 
-  changeView() {
+  changeView(x) {
     this.setState({
-      view: (this.state.view + 1) % 2
+      view: x
     })
+  }
+
+  updateWorkspaceXml(id, value){
+    this.refs.designContainer.updateWorkspaceXml(id, value);
   }
 
   render() {
@@ -40,7 +45,7 @@ export default class App extends Component {
           {(() => {
             if (this.state.view === 0) {
               return <Grid item sm={8} style={{ height: '100%' }}>
-                <DesignContainer />
+                <DesignContainer ref="designContainer"/>
               </Grid>
             }
             return <Grid item sm={8} style={{ height: '100%' }}>
@@ -48,7 +53,7 @@ export default class App extends Component {
             </Grid>
           })()}
           <Grid item sm={4} style={{ height: '100%' }} bottom={0}>
-            <ChatContainer />
+            <ChatContainer updateWorkspaceXml={this.updateWorkspaceXml}/>
           </Grid>
         </Grid>
       </ThemeProvider>

@@ -3,12 +3,30 @@ import BlocklyComponent, { Block } from './Blockly';
 import './blocks/customblocks';
 
 export default class BlocklyWindow extends Component {
+  constructor(props) {
+    super(props);
+    this.workspace = React.createRef();
+
+    this.updateWorkspace = this.updateWorkspace.bind(this);
+  }
+
+  updateWorkspace(id, value) {
+    var xmlString = this.refs.blocklyComponent.getXml();
+    var fields = xmlString.getElementsByTagName("field");
+    for (var i = 0; i < fields.length; i++) {
+      if (fields[i] && fields[i].getAttributeNode("name").nodeValue === id) {
+        fields[i].innerHTML = value;
+      }
+    }
+    this.refs.blocklyComponent.setXml(xmlString)
+    console.log(xmlString)
+  }
 
   render() {
     return (
       <div>
         <header>
-          <BlocklyComponent ref={e => this.simpleWorkspace = e} readOnly={false} move={{
+          <BlocklyComponent ref="blocklyComponent" readOnly={false} move={{
             scrollbars: true,
             drag: true,
             wheel: true
@@ -48,7 +66,7 @@ export default class BlocklyWindow extends Component {
         </xml>`
           }>
             <Block type="experiment_design" />
-            <Block type="independent_variable"/>
+            <Block type="independent_variable" />
             <Block type="variable" />
             <Block type="dependent_variable" />
           </BlocklyComponent>
