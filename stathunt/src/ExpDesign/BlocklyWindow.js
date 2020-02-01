@@ -13,22 +13,39 @@ export default class BlocklyWindow extends Component {
 
   updateWorkspace(id, value) {
     var xmlString = this.refs.blocklyComponent.getXml();
-    console.dir(xmlString)
+    var addXml
+    console.log(xmlString);
     if (xmlString.getElementsByTagName("field").length === 0) {
-      var initXml = `<xml><block type="experiment_design" id="5KnM]4+hTN|]u!f_:f03" x="47" y="34"><field name="designName">Design name</field><field name="goal">...</field><field name="hypothesis">...</field><field name="procedure">...</field><field name="BETWEENWITHIN">unknown</field><field name="participants">0</field><statement name="independentVariables"><block type="independent_variable" id="2:YN+A;c^ft~f/~pWuS"><field name="NAME">IV name</field><field name="INFO">...</field><statement name="variables"><block type="variable" id="%+;/ds|+db}:7u4J}7My"><field name="NAME">IV value</field><next><block type="variable" id="~8$nFgfiqx8:yVcyrYTN"><field name="NAME">IV value</field></block></next></block></statement></block></statement><statement name="dependentVariables"><block type="dependent_variable" id="o}L%w3]60sD.]EDdGDI"><field name="NAME">DV name</field><field name="SOM">NOMINAL</field></block></statement></block></xml>`
+      var initXml = `<xml><block type="experiment_design" id="5KnM]4+hTN|]u!f_:f03" x="47" y="34"><field name="designName">Design name</field><field name="goal">...</field><field name="hypothesis">...</field><field name="procedure">...</field><field name="BETWEENWITHIN">unknown</field><field name="participants">0</field></block></xml>`
       Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(initXml), this.refs.blocklyComponent.primaryWorkspace);
       xmlString = this.refs.blocklyComponent.getXml();
     }
     if(id === "iv_values"){
-      var addXml = Blockly.Xml.textToDom('<block type="variable" id="%+;/ds|+db}:7u4J}7My"><field name="NAME">'+value+'</field><next><block type="variable" id="~8$nFgfiqx8:yVcyrYTN"><field name="NAME">IV value</field></block></next></block>');
-      xmlString.getElementsByTagName("statement")[0].children[0].getElementsByTagName("statement")[0].appendChild(addXml);
+      var ivXml = xmlString.getElementsByTagName("statement")[0].children[0]
+      if (ivXml.getElementsByTagName("statement")[0] === undefined){
+        ivXml.appendChild(Blockly.Xml.textToDom('<statement name="variables"><block type="variable" id="'+value+'"><field name="NAME">'+value+'</field></block></statement>'));
+        this.refs.blocklyComponent.setXml(xmlString);
+        return;
+      }
+      var valXml = ivXml.getElementsByTagName("statement")[0].getElementsByTagName("block")[0];
+      while(valXml.getElementsByTagName("next")[0] !== undefined){
+        valXml = valXml.getElementsByTagName("next")[0].getElementsByTagName("block")[0];
+      }
+      valXml.appendChild(Blockly.Xml.textToDom('<next><block type="variable" id="'+value+'"><field name="NAME">'+value+'</field></block></next>'));
+      // xmlString.getElementsByTagName("statement")[0].children[0].getElementsByTagName("statement")[0].appendChild(addXml);
       this.refs.blocklyComponent.setXml(xmlString);
       return;
     }
     if(id === "independent_variables"){
-      var addXml = Blockly.Xml.textToDom('<statement name="independentVariables"><block type="independent_variable" id="2:YN+A;c^ft~f/~pWuS"><field name="NAME">'+value+'</field><field name="INFO">...</field></block></statement>');
+      addXml = Blockly.Xml.textToDom('<statement name="independentVariables"><block type="independent_variable" id="/K%Iq,g4o]t51VpkHY3="><field name="NAME">'+value+'</field><field name="INFO">...</field></block></statement>');
       xmlString.getElementsByTagName('block')[0].appendChild(addXml);
-      this.refs.blocklyComponent.setXml(xmlString)
+      this.refs.blocklyComponent.setXml(xmlString);
+      return
+    }
+    if(id === "dependent_variables"){
+      addXml = Blockly.Xml.textToDom('<statement name="dependentVariables"><block type="dependent_variable" id="'+value+'"><field name="NAME">'+value+'</field><field name="SOM">NOMINAL</field></block></statement>');
+      xmlString.getElementsByTagName('block')[0].appendChild(addXml);
+      this.refs.blocklyComponent.setXml(xmlString);
       return
     }
     var fields = xmlString.getElementsByTagName("field");
@@ -37,8 +54,7 @@ export default class BlocklyWindow extends Component {
         fields[i].innerHTML = value;
       }
     }
-    this.refs.blocklyComponent.setXml(xmlString)
-    console.log(xmlString)
+    this.refs.blocklyComponent.setXml(xmlString);
   }
 
   render() {

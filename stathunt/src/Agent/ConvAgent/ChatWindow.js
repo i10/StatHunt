@@ -10,7 +10,7 @@ export default class ChatWindow extends Component {
             {
                 "id": "0",
                 "message": "Hello, welcome to StatHunt! I’m here to help you find a correct statistical procedure for your experiment.",
-                "trigger": "independent_variables"
+                "trigger": "1"
             },
             {
                 "id": "1",
@@ -163,8 +163,22 @@ export default class ChatWindow extends Component {
                     }
                     return true
                 },
-                "end": true,
-            }
+                "trigger": "20",
+            },
+            {
+                "id": "20",
+                "message": "What's the name of your dependant variable?",
+                "trigger": "dependent_variables",
+            },
+            {
+                "id": "dependent_variables",
+                "user": true,
+                validator: (value) => {
+                    this.props.updateWorkspaceXml("dependent_variables", value);
+                    return true;
+                },
+                "end": true
+            },
         ]
 
         this.state = {
