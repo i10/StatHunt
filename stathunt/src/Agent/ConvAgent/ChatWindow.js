@@ -66,21 +66,35 @@ export default class ChatWindow extends Component {
             },
             {
                 "id": "9",
-                "message": "OK, let’s get to the experimental design. Will you be using a between-subjects or within-subjects design?",
+                "message": "Could you briefly explain the procedure of your experiment?",
+                "trigger": "procedure"
+            },
+            {
+                "id": "procedure",
+                "user": true,
+                validator: (value) => {
+                    this.props.updateWorkspaceXml("procedure", value);
+                    return true;
+                },
                 "trigger": "10"
             },
             {
                 "id": "10",
-                "user": true,
+                "message": "OK, let’s get to the experimental design. Will you be using a between-subjects or within-subjects design?",
                 "trigger": "11"
             },
             {
                 "id": "11",
-                "message": "A between-subjects study design would mean that each user group uses only one condition of the independent variable, whereas a within-subjects study design would mean that every user group uses all conditions.",
+                "user": true,
                 "trigger": "12"
             },
             {
                 "id": "12",
+                "message": "A between-subjects study design would mean that each user group uses only one condition of the independent variable, whereas a within-subjects study design would mean that every user group uses all conditions.",
+                "trigger": "13"
+            },
+            {
+                "id": "13",
                 "user": true,
                 validator: (value) => {
                     if(value[0] === 'b'){
@@ -91,20 +105,6 @@ export default class ChatWindow extends Component {
                     }else{
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "unknown")
                     }
-                    return true;
-                },
-                "trigger": "13"
-            },
-            {
-                "id": "13",
-                "message": "Could you briefly explain the procedure of your experiment?",
-                "trigger": "procedure"
-            },
-            {
-                "id": "procedure",
-                "user": true,
-                validator: (value) => {
-                    this.props.updateWorkspaceXml("procedure", value);
                     return true;
                 },
                 "trigger": "14"
