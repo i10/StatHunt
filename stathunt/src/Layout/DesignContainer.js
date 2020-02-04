@@ -14,8 +14,8 @@ export default class DesignContainer extends Component{
     }
 
     render(){
-        return <div style={{height:'100%'}}>
-            <BlocklyWindow ref="blocklyWindow" style={{height:'100%'}}/>
+        return <div>
+            <BlocklyWindow ref="blocklyWindow" />
         </div>
     }
 }

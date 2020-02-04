@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
+import { Container, Stepper, Step, StepLabel, Typography } from '@material-ui/core';
+import HorizontalNonLinearStepper from './NavigationStepper';
 
 export default class App extends Component {
   render() {
+
     var data = [
       {
         "country": "AD",
@@ -203,21 +206,38 @@ export default class App extends Component {
       motionStiffness={90}
       motionDamping={15}
     />;
-    return <Grid container>
-      <Grid container xs={6}>
-        <Grid item xs={12} style={{ height: '40vh' }}>
-          {graph}
+    return <React.Fragment background='#32423'>
+      <Grid container>
+        <Grid xs={2} item>
+          <Container>
+            <Typography variant='h4' align='center' display='block' style={{padding:'10px'}}>
+              Stathunt
+          </Typography>
+          </Container>
+
         </Grid>
-        <Grid item xs={12} style={{ height: '50vh' }}>
-          <MaterialTable columns={[
-            { title: 'Country', field: 'country' },
-            { title: 'Hot Dog', field: 'hot dog' },
-            { title: 'Burger', field: 'burger' }
-          ]}
-            data={data} />
+        <Grid xs={10} item>
+          <HorizontalNonLinearStepper />
         </Grid>
       </Grid>
 
-    </Grid>
+      <Grid container>
+        <Grid container xs={6}>
+          <Grid item xs={12} style={{ height: '40vh' }}>
+            {graph}
+          </Grid>
+          <Grid item xs={12} style={{ height: '50vh' }}>
+            <MaterialTable columns={[
+              { title: 'Country', field: 'country' },
+              { title: 'Hot Dog', field: 'hot dog' },
+              { title: 'Burger', field: 'burger' }
+            ]}
+              data={data} />
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+
+
   }
 }

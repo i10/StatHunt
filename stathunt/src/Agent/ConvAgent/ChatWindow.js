@@ -210,6 +210,7 @@ export default class ChatWindow extends Component {
             userBubbleColor: '#88A5BD',
             userFontColor: '#fff',
         }
+
         return (
             <ThemeProvider theme={theme}>
                 <ChatBot steps={this.state.steps} {...config} />

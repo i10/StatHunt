@@ -11,14 +11,7 @@ export default class App extends Component {
       view: 0
     }
     this.designContainer = React.createRef();
-    this.changeView = this.changeView.bind(this);
     this.updateWorkspaceXml = this.updateWorkspaceXml.bind(this);
-  }
-
-  changeView(x) {
-    this.setState({
-      view: x
-    })
   }
 
   updateWorkspaceXml(id, value){
@@ -29,30 +22,29 @@ export default class App extends Component {
     const theme = createMuiTheme({
       palette: {
         primary: {
-          main: '#5A6D7D'
+          main: '#05e297',
+          contrastText: '#fff'
         },
         secondary: {
-          main: '#ffffff'
+          main: '#5A6D7D'
         },
       }
     })
     return <Fragment>
       <ThemeProvider theme={theme}>
+      <NavBar onViewButtonClick={this.changeView} />
         <Grid container style={{ height: '100%' }}>
-          <Grid item sm={12}>
-            <NavBar onViewButtonClick={this.changeView} />
-          </Grid>
           {(() => {
             if (this.state.view === 0) {
-              return <Grid item sm={8} style={{ height: '100%' }}>
-                <DesignContainer ref="designContainer"/>
+              return <Grid item sm={8}>
+                <DesignContainer ref="designContainer" />
               </Grid>
             }
-            return <Grid item sm={8} style={{ height: '100%' }}>
+            return <Grid item sm={8}>
               <DataContainer />
             </Grid>
           })()}
-          <Grid item sm={4} style={{ height: '100%' }} bottom={0}>
+          <Grid item sm={4}>
             <ChatContainer updateWorkspaceXml={this.updateWorkspaceXml}/>
           </Grid>
         </Grid>
