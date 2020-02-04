@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
-import { Container } from '@material-ui/core';
 
 export default class App extends Component {
   render() {
@@ -204,20 +203,21 @@ export default class App extends Component {
       motionStiffness={90}
       motionDamping={15}
     />;
-    return <Grid container height="100%">
-      <Grid item xs={4} height="100%">
+    return <Grid container>
+      <Grid container xs={6}>
+        <Grid item xs={12} style={{ height: '40vh' }}>
           {graph}
-      </Grid>
-      <Grid item xs={8}>
-        <Container style={{height:'600px'}}>
+        </Grid>
+        <Grid item xs={12} style={{ height: '50vh' }}>
           <MaterialTable columns={[
-            {title: 'Country', field: 'country'},
-            {title: 'Hot Dog', field: 'hot dog'},
-            {title: 'Burger', field: 'burger'}
+            { title: 'Country', field: 'country' },
+            { title: 'Hot Dog', field: 'hot dog' },
+            { title: 'Burger', field: 'burger' }
           ]}
-      data={data}/>
-        </Container>
+            data={data} />
+        </Grid>
       </Grid>
+
     </Grid>
   }
 }
