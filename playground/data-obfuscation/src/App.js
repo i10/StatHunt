@@ -4,6 +4,8 @@ import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
 import { Container, Stepper, Step, StepLabel, Typography } from '@material-ui/core';
 import HorizontalNonLinearStepper from './NavigationStepper';
+import ChatWindow from './ChatWindow';
+import Graph from './Graph';
 
 export default class App extends Component {
   render() {
@@ -206,7 +208,7 @@ export default class App extends Component {
       motionStiffness={90}
       motionDamping={15}
     />;
-    return <React.Fragment background='#32423'>
+    return <React.Fragment>
       <Grid container>
         <Grid xs={2} item>
           <Container>
@@ -222,9 +224,9 @@ export default class App extends Component {
       </Grid>
 
       <Grid container>
-        <Grid container xs={6}>
+        <Grid container xs={8}>
           <Grid item xs={12} style={{ height: '40vh' }}>
-            {graph}
+            <Graph />
           </Grid>
           <Grid item xs={12} style={{ height: '50vh' }}>
             <MaterialTable columns={[
@@ -234,6 +236,9 @@ export default class App extends Component {
             ]}
               data={data} />
           </Grid>
+        </Grid>
+        <Grid item xs={4}>
+          <ChatWindow />
         </Grid>
       </Grid>
     </React.Fragment>
