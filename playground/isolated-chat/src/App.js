@@ -1,31 +1,24 @@
 import React from 'react';
 import ChatBot from 'react-simple-chatbot';
+import { steps } from './chat_options';
 
 
 function App() {
-  var steps = [
-    {
-      id: '1',
-      message: 'Hello You!',
-      trigger: '2'
-    },
-    {
-      id: '2',
-      user: true,
-      placeholder: 'Your Mom!',
-      trigger: '1'
-    }
-  ];
-
   const chat_config = {
-    floating: true,
+    floating: false,
     opened: true,
-    width: '40%',
-    height: '80%',
+    width: '40vw',
     hideUserAvatar: true,
     hideBotAvatar: true,
-    botDelay: 0,
-    headerTitle: 'StatHunt'
+    botDelay: 10,
+    headerTitle: 'StatHunt',
+    style: {
+      'margin-left': '30vw',
+      'margin-top': '10vh'
+    },
+    // contentStyle: {
+    //   height: '100px'
+    // }
   }
 
   return (

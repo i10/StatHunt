@@ -10,12 +10,12 @@ export default class App extends Component {
     }
   }
   getDistr() {
-    var normal = Array.from(Array(1000).keys(), x => ([x, randomNormal(100, 10)()]));
-    console.log(normal);
+    var normal = Array.from(Array(20).keys(), x => ([x, randomNormal(100, 10)()]));
     return normal;
   }
 
   obfuscate(val, eps) {
+    console.log(eps);
     const mu = -.5;
     const b = eps;
     var u = Math.random() - 0.5;

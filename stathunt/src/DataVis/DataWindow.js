@@ -52,7 +52,7 @@ export default class DataWindow extends Component {
         //     download: false
         // }
         return <Grid container>
-            <Grid item sm={12} style={{ margin: '40px' }}>
+            <Grid item sm={9} style={{ margin: '40px' }}>
                 {/* <MUIDatatable title={"Rat Lab 1"} data={table_data()} columns={columns} options={options} /> */}
                 <MaterialTable
                     columns={mt_columns()}
@@ -79,6 +79,7 @@ export default class DataWindow extends Component {
                         },
                     ]}
                 />
+                <Grid item sm={3} />
             </Grid>
         </Grid>
     }

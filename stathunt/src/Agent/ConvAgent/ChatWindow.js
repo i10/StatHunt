@@ -97,12 +97,12 @@ export default class ChatWindow extends Component {
                 "id": "13",
                 "user": true,
                 validator: (value) => {
-                    if(value[0] === 'b'){
+                    if (value[0] === 'b') {
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "between");
                     }
-                    else if(value[0] === 'w'){
+                    else if (value[0] === 'w') {
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "within");
-                    }else{
+                    } else {
                         this.props.updateWorkspaceXml("BETWEENWITHIN", "unknown")
                     }
                     return true;
@@ -158,7 +158,7 @@ export default class ChatWindow extends Component {
                 "user": true,
                 validator: (value) => {
                     var values = value.split(',');
-                    for(var i in values){
+                    for (var i in values) {
                         this.props.updateWorkspaceXml("iv_values", values[i]);
                     }
                     return true
