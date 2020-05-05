@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin_text-hfn3uf",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Please pick one of the choices!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-10T15:01:12.790Z",
+    "modifiedOn": "2020-04-10T15:01:12.790Z"
+  },
+  {
+    "id": "builtin_text-jmkFfq",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Insert some text pls."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-10T15:01:45.735Z",
+    "modifiedOn": "2020-04-10T15:01:45.735Z"
+  },
+  {
+    "id": "builtin_text-ePqwkA",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Insert some number please"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-10T15:02:07.455Z",
+    "modifiedOn": "2020-04-10T15:02:07.455Z"
+  }
+]

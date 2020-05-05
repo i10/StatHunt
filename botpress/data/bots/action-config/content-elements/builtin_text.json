@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin_text-vKsmZb",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Design is looking like: {{user.design}}"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T08:09:42.840Z",
+    "modifiedOn": "2020-04-21T08:14:47.230Z"
+  },
+  {
+    "id": "builtin_text-alpzc5",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Variable name"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T08:10:10.913Z",
+    "modifiedOn": "2020-04-21T08:10:10.913Z"
+  },
+  {
+    "id": "builtin_text-3Tb7zv",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Value"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T08:18:17.092Z",
+    "modifiedOn": "2020-04-21T08:18:17.092Z"
+  }
+]

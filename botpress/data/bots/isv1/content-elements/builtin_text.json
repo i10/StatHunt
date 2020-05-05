@@ -1,0 +1,314 @@
+[
+  {
+    "id": "builtin_text-8odsB4",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Welcome to StatHunt!",
+      "variations$en": [
+        ""
+      ]
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:00:53.756Z",
+    "modifiedOn": "2020-04-06T11:00:56.209Z"
+  },
+  {
+    "id": "builtin_text-H4uKGh",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Awesome, let's get this ball rolling! If you want to jump back to the main overview you can press \"back\" at any time, if you're unsure or need help press \"help\""
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:01:13.292Z",
+    "modifiedOn": "2020-04-06T11:01:13.292Z"
+  },
+  {
+    "id": "builtin_text-aFltkx",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What is the goal of your experiment analysis?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:01:22.528Z",
+    "modifiedOn": "2020-04-06T11:01:22.528Z"
+  },
+  {
+    "id": "builtin_text-nQJg94",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What the experiment hypothesis?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:01:30.307Z",
+    "modifiedOn": "2020-04-06T11:01:30.307Z"
+  },
+  {
+    "id": "builtin_text-_JCeXa",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "How are you going to be collecting the data?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:01:41.628Z",
+    "modifiedOn": "2020-04-06T11:01:41.628Z"
+  },
+  {
+    "id": "builtin_text-TBVa61",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "How many participants will your experiment have?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:01:59.465Z",
+    "modifiedOn": "2020-04-06T11:01:59.465Z"
+  },
+  {
+    "id": "builtin_text-9tMnJj",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Your hypothesis is the problem statement that can be directly tested through an empirical investigation. It should clearly state the control groups or conditions of the experiment."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T15:01:32.881Z",
+    "modifiedOn": "2020-04-06T15:01:32.881Z"
+  },
+  {
+    "id": "builtin_text-YRFmdI",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "The goal of an experiment is the reason you're performing it and the analysis. This can vary, some common reasons are:\n            - Describing a situation or a set of events\n            - Identifying relations between multiple Variables\n            - Identifying causes of a situation or a set of events"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T15:02:01.242Z",
+    "modifiedOn": "2020-04-06T15:02:01.242Z"
+  },
+  {
+    "id": "builtin_text-AAH5E5",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "There is a difference between the pull-down menu and the pop-up menu in the time spent locating pages"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T15:02:56.764Z",
+    "modifiedOn": "2020-04-06T15:02:56.764Z"
+  },
+  {
+    "id": "builtin_text-CKW6I0",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "How many independent variables does your experiment have?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T15:31:08.347Z",
+    "modifiedOn": "2020-04-06T15:31:08.347Z"
+  },
+  {
+    "id": "builtin_text-t7qSA0",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What is independent variable {{temp.curr_fact}} / {{temp.factors}} called?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T15:49:12.328Z",
+    "modifiedOn": "2020-04-08T12:16:04.563Z"
+  },
+  {
+    "id": "builtin_text-oETlMf",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "How many different values can this variable take?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T15:49:28.699Z",
+    "modifiedOn": "2020-04-07T15:49:28.699Z"
+  },
+  {
+    "id": "builtin_text-ULEcFq",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What is the name of value {{temp.curr_level}} / {{temp.levels}}?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T15:49:42.441Z",
+    "modifiedOn": "2020-04-08T12:16:36.541Z"
+  },
+  {
+    "id": "builtin_text-rLaFKk",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "How many dependent variables does your experiment have?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T17:04:37.659Z",
+    "modifiedOn": "2020-04-07T17:04:37.659Z"
+  },
+  {
+    "id": "builtin_text-lXuchy",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What is dependent variable {{temp.curr_variable}} / {{temp.variables}} called?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T17:05:25.028Z",
+    "modifiedOn": "2020-04-08T12:14:04.316Z"
+  },
+  {
+    "id": "builtin_text-LU8Ewy",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Is there any additional information you can provide?",
+      "variations$en": []
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T17:41:09.525Z",
+    "modifiedOn": "2020-04-07T17:41:09.525Z"
+  },
+  {
+    "id": "builtin_text-bmm2n6",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Error!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-08T17:00:24.567Z",
+    "modifiedOn": "2020-04-08T17:04:19.285Z"
+  },
+  {
+    "id": "builtin_text-9aqiYe",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Please drag your dataset into the chat window. "
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T07:44:30.307Z",
+    "modifiedOn": "2020-04-21T07:44:30.307Z"
+  },
+  {
+    "id": "builtin_text-T1oNIM",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Asd"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T11:20:58.094Z",
+    "modifiedOn": "2020-04-21T11:20:58.094Z"
+  },
+  {
+    "id": "builtin_text-mHEewp",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "You can get a formatted version of your experiment version through this link:\ndummyurl.com"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T11:41:58.410Z",
+    "modifiedOn": "2020-04-21T11:41:58.410Z"
+  },
+  {
+    "id": "builtin_text-0-Rdgd",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "To start off, authenticate stackexchange. Doing this will allow me to directly post your question."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T11:51:56.643Z",
+    "modifiedOn": "2020-04-21T11:51:56.643Z"
+  },
+  {
+    "id": "builtin_text-m1OHlc",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Hmm, looks like that didn't work out. Let's try again!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T11:52:54.376Z",
+    "modifiedOn": "2020-04-21T11:52:54.376Z"
+  },
+  {
+    "id": "builtin_text-PkbTah",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What title do you want to give the question?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T14:55:20.475Z",
+    "modifiedOn": "2020-04-21T14:55:20.475Z"
+  },
+  {
+    "id": "builtin_text-Rbt-aB",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What is your question?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T14:55:57.207Z",
+    "modifiedOn": "2020-04-21T14:55:57.207Z"
+  },
+  {
+    "id": "builtin_text-cSkrLC",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Select some of the following tags:"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T14:57:03.338Z",
+    "modifiedOn": "2020-04-21T14:57:03.338Z"
+  },
+  {
+    "id": "builtin_text-t_eVT-",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Perfect! We're all done, if you want to take a look at the posted question you can see it at the following url:\ndummyurl.com"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T14:59:03.549Z",
+    "modifiedOn": "2020-04-21T14:59:03.549Z"
+  },
+  {
+    "id": "builtin_text-NrhF4k",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Done!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T15:01:00.936Z",
+    "modifiedOn": "2020-04-21T15:01:00.936Z"
+  },
+  {
+    "id": "builtin_text-1WwRTM",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Finding the right statistical test is hard! Knowing what information you need to provide is essential. I'll guide you straight through the process"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T15:03:23.950Z",
+    "modifiedOn": "2020-04-21T15:03:23.950Z"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "dropdown-d3OsUd",
+    "formData": {
+      "buttonText$en": "Buttontext?",
+      "width$en": 200,
+      "displayInKeyboard$en": true,
+      "typing$en": true,
+      "message$en": "Choose",
+      "options$en": [
+        {
+          "label": "One",
+          "value": "choice_one"
+        },
+        {
+          "label": "Two",
+          "value": "choice_two"
+        }
+      ]
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-10T15:02:51.108Z",
+    "modifiedOn": "2020-04-10T15:02:51.108Z"
+  }
+]

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "builtin_single-choice--Lxxrh",
+    "formData": {
+      "choices$en": [
+        {
+          "title": "Start",
+          "value": "start"
+        },
+        {
+          "title": "Goal of Analysis",
+          "value": "goal_of_analysis"
+        },
+        {
+          "title": "Hypothesis",
+          "value": "hypothesis"
+        },
+        {
+          "title": "Procedure",
+          "value": "procedure"
+        },
+        {
+          "title": "Experimental Design",
+          "value": "exper_design"
+        },
+        {
+          "title": "Sample Size",
+          "value": "sample_size"
+        },
+        {
+          "title": "Independent Variables",
+          "value": "iv"
+        },
+        {
+          "title": "Dependent Variables ",
+          "value": "dv"
+        },
+        {
+          "title": "Help",
+          "value": "help"
+        }
+      ],
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "To get started, choose one of the options below! If you want to start linear walkthrough, click start!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T11:04:37.139Z",
+    "modifiedOn": "2020-04-08T12:25:20.724Z"
+  },
+  {
+    "id": "builtin_single-choice-8EiSw-",
+    "formData": {
+      "choices$en": [
+        {
+          "title": "File Upload",
+          "value": "BOTPRESS.FILE_UPLOAD"
+        }
+      ],
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Please upload your dataset by pressing the \"File Upload\" button"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T07:52:58.392Z",
+    "modifiedOn": "2020-04-21T07:52:58.392Z"
+  },
+  {
+    "id": "builtin_single-choice-L1Eaqb",
+    "formData": {
+      "choices$en": [
+        {
+          "title": "Post on Stackexchange",
+          "value": "stackexchange"
+        },
+        {
+          "title": "Share Information",
+          "value": "share"
+        }
+      ],
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Would you like to post a question or share the information per url?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-21T11:41:00.283Z",
+    "modifiedOn": "2020-04-21T15:00:29.048Z"
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "version": "0.0.1",
+  "catchAll": {
+    "onReceive": [],
+    "next": []
+  },
+  "startNode": "choice-e6afa0",
+  "nodes": [
+    {
+      "id": "skill-e6afa0",
+      "type": "skill-call",
+      "skill": "choice",
+      "name": "choice-e6afa0",
+      "flow": "skills/choice-e6afa0.flow.json",
+      "next": [
+        {
+          "caption": "User picked [text]",
+          "condition": "temp['skill-choice-ret-05bjxj5u6b'] == \"text\"",
+          "node": "node-f293"
+        },
+        {
+          "caption": "User picked [number]",
+          "condition": "temp['skill-choice-ret-05bjxj5u6b'] == \"number\"",
+          "node": "node-ae6a"
+        },
+        {
+          "caption": "User picked [dropdown]",
+          "condition": "temp['skill-choice-ret-05bjxj5u6b'] == \"dropdown\"",
+          "node": "node-5574"
+        },
+        {
+          "caption": "On failure",
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "onEnter": null,
+      "onReceive": null
+    },
+    {
+      "id": "d92981c283",
+      "name": "node-f293",
+      "next": [],
+      "onEnter": [
+        "say #!builtin_text-jmkFfq"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "9e09061f73",
+      "name": "node-ae6a",
+      "next": [],
+      "onEnter": [
+        "say #!builtin_text-ePqwkA"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "42805541d0",
+      "name": "node-5574",
+      "next": [],
+      "onEnter": [
+        "say #!dropdown-d3OsUd"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "0.0.1",
+  "catchAll": {
+    "onReceive": [],
+    "next": []
+  },
+  "startNode": "variable",
+  "nodes": [
+    {
+      "id": "ab5e5730ab",
+      "name": "variable",
+      "next": [
+        {
+          "condition": "true",
+          "node": "value"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-alpzc5"
+      ],
+      "onReceive": [
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"type\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "a78a5277ed",
+      "name": "value",
+      "next": [
+        {
+          "condition": "true",
+          "node": "variable"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-3Tb7zv"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"{{temp.type}}\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    }
+  ]
+}

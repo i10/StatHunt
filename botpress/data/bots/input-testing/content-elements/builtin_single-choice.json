@@ -1,0 +1,27 @@
+[
+  {
+    "id": "builtin_single-choice-TD1qIz",
+    "formData": {
+      "choices$en": [
+        {
+          "title": "Text",
+          "value": "text"
+        },
+        {
+          "title": "Number",
+          "value": "number"
+        },
+        {
+          "title": "Dropdown",
+          "value": "dropdown"
+        }
+      ],
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Choose ...."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-10T15:00:07.194Z",
+    "modifiedOn": "2020-04-10T15:00:07.194Z"
+  }
+]

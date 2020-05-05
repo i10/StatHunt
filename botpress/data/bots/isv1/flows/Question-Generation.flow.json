@@ -1,0 +1,144 @@
+{
+  "version": "0.0.1",
+  "catchAll": {},
+  "startNode": "choice-0146e0",
+  "description": "",
+  "nodes": [
+    {
+      "id": "skill-0146e0",
+      "type": "skill-call",
+      "skill": "choice",
+      "name": "choice-0146e0",
+      "flow": "skills/choice-0146e0.flow.json",
+      "next": [
+        {
+          "caption": "User picked [stackex...]",
+          "condition": "temp['skill-choice-ret-2hzqkc88am'] == \"stackexchange\"",
+          "node": "stackexchange"
+        },
+        {
+          "caption": "User picked [share]",
+          "condition": "temp['skill-choice-ret-2hzqkc88am'] == \"share\"",
+          "node": "data_export"
+        },
+        {
+          "caption": "On failure",
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "onEnter": null,
+      "onReceive": null
+    },
+    {
+      "id": "cd8c59b6c3",
+      "name": "data_export",
+      "next": [
+        {
+          "condition": "true",
+          "node": "choice-0146e0"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-mHEewp"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "1d0717b1da",
+      "name": "stackexchange",
+      "next": [
+        {
+          "condition": "true",
+          "node": "title"
+        },
+        {
+          "condition": "true",
+          "node": "stackexchange_fail"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-0-Rdgd"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "2d18052940",
+      "name": "stackexchange_fail",
+      "next": [
+        {
+          "condition": "true",
+          "node": "choice-0146e0"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-m1OHlc"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "aba9f8ff91",
+      "name": "title",
+      "next": [
+        {
+          "condition": "true",
+          "node": "question"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-NrhF4k",
+        "say #!builtin_text-PkbTah"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "b3e71b7fe4",
+      "name": "question",
+      "next": [
+        {
+          "condition": "true",
+          "node": "question_tags"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-Rbt-aB"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "8a72b5f356",
+      "name": "question_tags",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-1b8b"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-cSkrLC"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "43e78ac45c",
+      "name": "node-1b8b",
+      "next": [
+        {
+          "condition": "true",
+          "node": "choice-0146e0"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-t_eVT-"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    }
+  ]
+}

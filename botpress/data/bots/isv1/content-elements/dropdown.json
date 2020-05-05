@@ -1,0 +1,54 @@
+[
+  {
+    "id": "dropdown-00lfNn",
+    "formData": {
+      "buttonText$en": "",
+      "width$en": 200,
+      "displayInKeyboard$en": true,
+      "typing$en": true,
+      "message$en": "What kind of experimental design will you be using?",
+      "options$en": [
+        {
+          "label": "Within Subjects",
+          "value": ""
+        },
+        {
+          "label": "Between Subjects"
+        },
+        {
+          "label": "Split-Plot"
+        }
+      ]
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-06T12:50:24.782Z",
+    "modifiedOn": "2020-04-06T12:50:24.782Z"
+  },
+  {
+    "id": "dropdown-DqMi8q",
+    "formData": {
+      "buttonText$en": "",
+      "width$en": 200,
+      "displayInKeyboard$en": true,
+      "typing$en": true,
+      "message$en": "What kind of data will be collected for it?",
+      "options$en": [
+        {
+          "label": "Ordinal"
+        },
+        {
+          "label": "Nominal"
+        },
+        {
+          "label": "Interval"
+        },
+        {
+          "label": "Ratio"
+        }
+      ]
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-04-07T17:06:27.047Z",
+    "modifiedOn": "2020-04-07T17:06:27.047Z"
+  }
+]

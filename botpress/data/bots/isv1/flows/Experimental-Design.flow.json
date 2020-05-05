@@ -1,0 +1,343 @@
+{
+  "version": "0.0.1",
+  "catchAll": {
+    "onReceive": [],
+    "next": []
+  },
+  "startNode": "input_list",
+  "nodes": [
+    {
+      "id": "36968fe5a8",
+      "type": "skill-call",
+      "skill": "choice",
+      "name": "input_list",
+      "flow": "skills/choice-10fe4d.flow.json",
+      "next": [
+        {
+          "caption": "User picked [start]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"start\"",
+          "node": "Linear-Walkthrough.flow.json"
+        },
+        {
+          "caption": "User picked [goal_of...]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"goal_of_analysis\"",
+          "node": "analysis_goal"
+        },
+        {
+          "caption": "User picked [hypothe...]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"hypothesis\"",
+          "node": "hypothesis"
+        },
+        {
+          "caption": "User picked [procedu...]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"procedure\"",
+          "node": "procedure"
+        },
+        {
+          "caption": "User picked [exper_d...]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"exper_design\"",
+          "node": "exper_design"
+        },
+        {
+          "caption": "User picked [sample_...]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"sample_size\"",
+          "node": "sample_size"
+        },
+        {
+          "caption": "User picked [iv]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"iv\"",
+          "node": "independent_variables"
+        },
+        {
+          "caption": "User picked [dv]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"dv\"",
+          "node": "dependent_variables"
+        },
+        {
+          "caption": "User picked [help]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"help\"",
+          "node": ""
+        },
+        {
+          "caption": "On failure",
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "onEnter": null,
+      "onReceive": null
+    },
+    {
+      "id": "36702ce61b",
+      "name": "independent_variables",
+      "next": [
+        {
+          "condition": "true",
+          "node": "factor_name"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-CKW6I0"
+      ],
+      "onReceive": [
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"factors\",\"value\":\"{{event.preview}}\"}",
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"curr_fact\",\"value\":\"1\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "e0523eb82c",
+      "name": "level_name",
+      "next": [
+        {
+          "condition": "temp.curr_level == Number(temp.levels) + 1",
+          "node": "node-ac0c"
+        },
+        {
+          "condition": "true",
+          "node": "node-4cb1"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-ULEcFq"
+      ],
+      "onReceive": [
+        "exp_design/independent_variable/incrLevels {}",
+        "exp_design/independent_variable/setLevelName {\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "f1e3f3f737",
+      "name": "node-4cb1",
+      "next": [
+        {
+          "condition": "true",
+          "node": "level_name"
+        }
+      ],
+      "onEnter": [],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "0a3710bbcb",
+      "name": "levels",
+      "next": [
+        {
+          "condition": "true",
+          "node": "level_name"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-oETlMf"
+      ],
+      "onReceive": [
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"levels\",\"value\":\"{{event.preview}}\"}",
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"curr_level\",\"value\":\"1\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "badfe2edfc",
+      "name": "dependent_variables",
+      "next": [
+        {
+          "condition": "true",
+          "node": "variable_name"
+        },
+        {
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-rLaFKk"
+      ],
+      "onReceive": [
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"variables\",\"value\":\"{{event.preview}}\"}",
+        "builtin/setVariable {\"type\":\"temp\",\"name\":\"curr_variable\",\"value\":\"1\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "dc3f65ddd7",
+      "name": "variable_name",
+      "next": [
+        {
+          "condition": "true",
+          "node": "scale_of_measurement"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-lXuchy"
+      ],
+      "onReceive": [
+        "exp_design/dependent_variable/setVarName {\"value\":\"{{event.preview}}\"}",
+        "exp_design/dependent_variable/incrVariables {}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "d6ba359d71",
+      "name": "scale_of_measurement",
+      "next": [
+        {
+          "condition": "true",
+          "node": "value_name"
+        }
+      ],
+      "onEnter": [
+        "say #!dropdown-DqMi8q"
+      ],
+      "onReceive": [
+        "exp_design/dependent_variable/setScaleOfMeasurement {\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "163a85f745",
+      "name": "value_name",
+      "next": [
+        {
+          "condition": "temp.curr_variable == Number(temp.variables)+1",
+          "node": "input_list"
+        },
+        {
+          "condition": "true",
+          "node": "variable_name"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-LU8Ewy"
+      ],
+      "onReceive": [
+        "exp_design/dependent_variable/setAdditionalInfo {\"value\":\"{{event.preview}}\"}",
+        "exp_design/dependent_variable/postVariable {}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "ac11d00246",
+      "name": "node-ac0c",
+      "next": [
+        {
+          "condition": "temp.curr_fact == Number(temp.factors) + 1",
+          "node": "input_list"
+        },
+        {
+          "condition": "true",
+          "node": "factor_name"
+        }
+      ],
+      "onEnter": [
+        "exp_design/independent_variable/postVariable {}"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "13fc96abcf",
+      "name": "factor_name",
+      "next": [
+        {
+          "condition": "true",
+          "node": "levels"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-t7qSA0"
+      ],
+      "onReceive": [
+        "exp_design/independent_variable/setVarName {\"value\":\"{{event.preview}}\"}",
+        "exp_design/independent_variable/incrFactors {}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "633ee0b561",
+      "name": "hypothesis",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-nQJg94"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"hypothesis\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "ff4e2bb45a",
+      "name": "analysis_goal",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-aFltkx"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"analysis_goal\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "95d0b19278",
+      "name": "procedure",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-_JCeXa"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"procedure\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "793331f16b",
+      "name": "exper_design",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!dropdown-00lfNn"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"exp_design\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "1fffb6777d",
+      "name": "sample_size",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-TBVa61"
+      ],
+      "onReceive": [
+        "saveVar {\"type\":\"sample_size\",\"value\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    }
+  ]
+}

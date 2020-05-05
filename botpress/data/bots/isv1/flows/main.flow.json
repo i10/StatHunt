@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "catchAll": {
+    "onReceive": [],
+    "next": []
+  },
+  "startNode": "entry",
+  "nodes": [
+    {
+      "id": "entry",
+      "name": "entry",
+      "next": [
+        {
+          "condition": "true",
+          "node": "Experimental-Design.flow.json"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-8odsB4"
+      ],
+      "onReceive": null
+    },
+    {
+      "id": "7ceb5f34da",
+      "name": "node-e6ba",
+      "next": [],
+      "onEnter": [],
+      "onReceive": null,
+      "type": "standard"
+    }
+  ]
+}

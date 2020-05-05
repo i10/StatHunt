@@ -1,0 +1,56 @@
+{
+  "version": "0.0.1",
+  "catchAll": {},
+  "startNode": "entry",
+  "description": "",
+  "nodes": [
+    {
+      "id": "e5dcc54027",
+      "name": "entry",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "choice-6f42d5"
+        },
+        {
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "skill-6f42d5",
+      "type": "skill-call",
+      "skill": "choice",
+      "name": "choice-6f42d5",
+      "flow": "skills/choice-6f42d5.flow.json",
+      "next": [
+        {
+          "caption": "User picked [BOTPRES...]",
+          "condition": "temp['skill-choice-ret-weffjfz0qr'] == \"BOTPRESS.FILE_UPLOAD\"",
+          "node": "node-ffad"
+        },
+        {
+          "caption": "On failure",
+          "condition": "true",
+          "node": ""
+        }
+      ],
+      "onEnter": null,
+      "onReceive": null
+    },
+    {
+      "id": "30f5e5edd3",
+      "name": "node-ffad",
+      "next": [],
+      "onEnter": [
+        "say #!builtin_text-T1oNIM"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    }
+  ]
+}
