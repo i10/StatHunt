@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppBar, Toolbar, Typography, Button, ButtonGroup } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, } from '@material-ui/core';
 import NavigationStepper from './NavigationStepper';
 
 
@@ -14,10 +14,5 @@ export default class NavBar extends Component {
             </AppBar>
             <Toolbar />
         </React.Fragment>
-    //     <ButtonGroup style={{ padding: '10px' }} variant="outlined" color='#fff'>
-    //     <Button onClick={this.props.onViewButtonClick}>Experimental Design</Button>
-    //     <Button onClick={this.props.onViewButtonClick}>Dataset </Button>
-    //     <Button>Questions</Button>
-    // </ButtonGroup>
     }
 }

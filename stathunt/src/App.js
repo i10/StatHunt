@@ -14,16 +14,39 @@ export default class App extends Component {
     this.updateWorkspaceXml = this.updateWorkspaceXml.bind(this);
   }
 
-  updateWorkspaceXml(id, value){
+  updateWorkspaceXml(id, value) {
     this.refs.designContainer.updateWorkspaceXml(id, value);
   }
+
+  componentDidMount() {
+    if (localStorage.uid == null) {
+      fetch("http://localhost:8000/uid")
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          console.log("New user_id generated: " + response["user_id"]);
+          localStorage.uid = response["user_id"]
+        });
+    }else{
+      console.log("User id found " + localStorage.uid)
+    }
+
+
+    window.botpressWebChat.init({
+      host: 'http://localhost:3000',
+      botId: 'isv1',
+      userId: localStorage.uid
+    })
+  }
+
 
   render() {
     const theme = createMuiTheme({
       palette: {
         primary: {
           main: '#05e297',
-          contrastText: '#fff'
+          contrastText: 'inherit'
         },
         secondary: {
           main: '#5A6D7D'
@@ -32,7 +55,7 @@ export default class App extends Component {
     })
     return <Fragment>
       <ThemeProvider theme={theme}>
-      <NavBar onViewButtonClick={this.changeView} />
+        <NavBar onViewButtonClick={this.changeView} />
         <Grid container style={{ height: '100%' }}>
           {(() => {
             if (this.state.view === 0) {
@@ -45,7 +68,7 @@ export default class App extends Component {
             </Grid>
           })()}
           <Grid item sm={4}>
-            <ChatContainer updateWorkspaceXml={this.updateWorkspaceXml}/>
+            <ChatContainer updateWorkspaceXml={this.updateWorkspaceXml} />
           </Grid>
         </Grid>
       </ThemeProvider>

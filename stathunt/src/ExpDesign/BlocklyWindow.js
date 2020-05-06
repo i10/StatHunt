@@ -32,7 +32,6 @@ export default class BlocklyWindow extends Component {
         valXml = valXml.getElementsByTagName("next")[0].getElementsByTagName("block")[0];
       }
       valXml.appendChild(Blockly.Xml.textToDom('<next><block type="variable" id="'+value+'"><field name="NAME">'+value+'</field></block></next>'));
-      // xmlString.getElementsByTagName("statement")[0].children[0].getElementsByTagName("statement")[0].appendChild(addXml);
       this.refs.blocklyComponent.setXml(xmlString);
       return;
     }
