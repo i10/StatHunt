@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import 'typeface-roboto';
-import { ChatContainer, NavBar, DesignContainer, DataContainer } from './Layout';
+import { NavBar, DesignContainer, DataContainer } from './Layout';
 import { Grid } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -10,12 +10,6 @@ export default class App extends Component {
     this.state = {
       view: 0
     }
-    this.designContainer = React.createRef();
-    this.updateWorkspaceXml = this.updateWorkspaceXml.bind(this);
-  }
-
-  updateWorkspaceXml(id, value) {
-    this.refs.designContainer.updateWorkspaceXml(id, value);
   }
 
   componentDidMount() {
@@ -68,7 +62,6 @@ export default class App extends Component {
             </Grid>
           })()}
           <Grid item sm={4}>
-            <ChatContainer updateWorkspaceXml={this.updateWorkspaceXml} />
           </Grid>
         </Grid>
       </ThemeProvider>

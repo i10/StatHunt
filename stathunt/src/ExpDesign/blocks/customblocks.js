@@ -26,14 +26,13 @@
 
 
 import * as Blockly from 'blockly/core';
-
 Blockly.Blocks['experiment_design'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldTextInput("Design name"), "designName")
-        this.appendDummyInput()
+        this.appendDummyInput("name")
+            .appendField(new Blockly.FieldTextInput("Design name"), "input")
+        this.appendDummyInput("goal")
             .appendField("Goal")
-            .appendField(new Blockly.FieldTextInput("...."), "goal");
+            .appendField(new Blockly.FieldTextInput("...."), "input");
         this.appendDummyInput()
             .appendField("Independent variables");
         this.appendStatementInput("independentVariables")
@@ -42,13 +41,13 @@ Blockly.Blocks['experiment_design'] = {
             .appendField("Dependent variables");
         this.appendStatementInput("dependentVariables")
             .setCheck(null);
-        this.appendDummyInput()
+        this.appendDummyInput("hypothesis")
             .appendField("Hypothesis")
-            .appendField(new Blockly.FieldTextInput("..."), "hypothesis");
-        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("..."), "input");
+        this.appendDummyInput("procedure")
             .appendField("Procedure")
-            .appendField(new Blockly.FieldTextInput("..."), "procedure");
-        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("..."), "input");
+        this.appendDummyInput('dss')
             .appendField("Design:")
             .appendField(new Blockly.FieldDropdown([["unknown", "unknown"], ["within-subjects", "within"], ["between-subjects", "between"]]), "BETWEENWITHIN")
             .appendField("Participants:")
@@ -61,9 +60,9 @@ Blockly.Blocks['experiment_design'] = {
 };
 Blockly.Blocks['dependent_variable'] = {
     init: function () {
-        this.appendDummyInput()
+        this.appendDummyInput("name")
             .appendField(new Blockly.FieldTextInput("DV name"), "NAME");
-        this.appendDummyInput()
+        this.appendDummyInput("scale_of_measurement")
             .appendField("Scale of measurement")
             .appendField(new Blockly.FieldDropdown([["nominal", "NOMINAL"], ["ordinal", "ORDINAL"], ["interval", "INTERVAL"], ["ratio", "RATIO"]]), "SOM");
         this.setPreviousStatement(true, null);
@@ -75,11 +74,11 @@ Blockly.Blocks['dependent_variable'] = {
 };
 Blockly.Blocks['independent_variable'] = {
     init: function () {
-        this.appendDummyInput()
+        this.appendDummyInput("name")
             .appendField(new Blockly.FieldTextInput("IV name"), "NAME");
         this.appendStatementInput("variables")
             .setCheck(null);
-        this.appendDummyInput()
+        this.appendDummyInput("add_info")
             .appendField("Additional info.")
             .appendField(new Blockly.FieldTextInput("..."), "INFO");
         this.setPreviousStatement(true, null);
@@ -92,7 +91,7 @@ Blockly.Blocks['independent_variable'] = {
 
 Blockly.Blocks['variable'] = {
     init: function() {
-      this.appendDummyInput()
+      this.appendDummyInput("name")
           .appendField(new Blockly.FieldTextInput("IV value"), "NAME");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
