@@ -284,7 +284,7 @@
         "say #!builtin_text-aFltkx"
       ],
       "onReceive": [
-        "saveVar {\"type\":\"analysis_goal\",\"value\":\"{{event.preview}}\"}"
+        "saveVar {\"type\":\"goal_of_analysis\",\"value\":\"{{event.preview}}\"}"
       ],
       "type": "standard"
     },

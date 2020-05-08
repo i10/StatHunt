@@ -17,6 +17,8 @@ app.add_middleware(
 )
 
 data = {}
+chat_overwrite = True
+update = {}
 
 # Helper Functions
 
@@ -24,32 +26,61 @@ data = {}
 def id_validation(user_id):
     if user_id not in data.keys():
         data[user_id] = {}
+        update[user_id] = True
         data[user_id]['design'] = {
-            'hypothesis': None,
-            'analysis_goal': None,
-            'procedure': None,
-            'sample_size': None,
-            'exp_design': None,
+            'hypothesis': "",
+            'goal_of_analysis': "",
+            'procedure': "",
+            'sample_size': "",
+            'exp_design': "",
             'iv': {},
             'dv': [],
         }
-
+        
+@app.get("/update/{user_id}")
+async def updated(user_id: str):
+    if(update[user_id]):
+        update[user_id] = False
+        return True
+    return False
+    
 
 @app.get("/uid")
 async def new_id():
     user_id = str(uuid.uuid1())
     data[user_id] = {}
+    update[user_id] = True
     data[user_id]['design'] = {
-        'hypothesis': None,
-        'goal_of_analysis': None,
-        'procedure': None,
-        'sample_size': None,
-        'exp_design': None,
+        'hypothesis': "",
+        'goal_of_analysis': "",
+        'procedure': "",
+        'sample_size': "",
+        'exp_design': "",
         'iv': {},
         'dv': [],
     }
     print("New user_id " + (user_id) + " generated")
     return {"user_id": (user_id)}
+
+class DesignData(BaseModel):
+    hypothesis: str
+    goal_of_analysis: str 
+    procedure: str 
+    sample_size: str 
+    exp_design: str 
+    iv: dict = {}
+    dv: list = []
+
+@app.get("/exp_design/{user_id}")
+async def get_design(user_id: str):
+    id_validation(user_id)
+    print(data[user_id]['design'])
+    return data[user_id]['design']
+
+@app.post("/exp_design/{user_id}")
+async def update_design(user_id: str, info: DesignData):
+    print("Overwriting design to " + info)
+    data[user_id]['design'] = info
 
 class DependentVariable(BaseModel):
     user_id: str

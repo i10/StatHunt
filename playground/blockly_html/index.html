@@ -13,58 +13,11 @@
         </div>
         <xml id="toolbox" style="display: none">
             <block type="experiment_design"></block>
+            <block type="dependent_variable"></block>
+            <block type="independent_variable"></block>
             <block type="variable"></block>
           </xml>
           <script>
-              Blockly.Blocks['experiment_design'] = {
-                init: function() {
-                    this.appendDummyInput()
-                        .appendField(new Blockly.FieldTextInput("Design Name"), "designName")
-                        .appendField(new Blockly.FieldColour("#3333ff"), "designColor");
-                    this.appendDummyInput()
-                        .appendField("Goal")
-                        .appendField(new Blockly.FieldTextInput("The goal of this experiment is..."), "NAME");
-                    this.appendDummyInput()
-                        .appendField("Hypothesis")
-                        .appendField(new Blockly.FieldTextInput("The hypothesis...."), "NAME");
-                    this.appendStatementInput("independentVariables")
-                        .setCheck(null)
-                        .appendField("Independent Variables");
-                    this.appendStatementInput("dependentVariables")
-                        .setCheck(null)
-                        .appendField("Dependent Variables");
-                    this.appendDummyInput()
-                        .appendField("Procedure")
-                        .appendField(new Blockly.FieldTextInput("First take all of the ducks and add them...."), "NAME");
-                    this.appendDummyInput()
-                        .appendField("Design:")
-                        .appendField(new Blockly.FieldDropdown([["between-subjects","OPTIONNAME"], ["within-subjects","OPTIONNAME"], ["unknown","OPTIONNAME"]]), "NAME")
-                        .appendField("Participants:")
-                        .appendField(new Blockly.FieldNumber(0, 0), "NAME");
-                    this.setInputsInline(false);
-                    this.setColour(135);
-                    this.setTooltip("");
-                    this.setHelpUrl("");
-                }
-            };
-            Blockly.Blocks['variable'] = {
-            init: function() {
-                this.appendDummyInput()
-                    .appendField("Name:")
-                    .appendField(new Blockly.FieldTextInput("Name"), "name")
-                    .appendField("Measurement:")
-                    .appendField(new Blockly.FieldDropdown([["Nominal","NOMINAL"], ["Ordinal","ORDINAL"], ["Interval","INTERVAL"], ["Ratio","RATIO"]]), "SCALES");
-                this.appendDummyInput()
-                    .appendField("Additional Info.:")
-                    .appendField(new Blockly.FieldTextInput("Type"), "NAME");
-                this.setPreviousStatement(true, null);
-                this.setNextStatement(true, null);
-                this.setColour(230);
-                this.setTooltip("");
-                this.setHelpUrl("");
-                }
-            };
-
               var blocklyArea = document.getElementById('blocklyArea');
               var blocklyDiv = document.getElementById('blocklyDiv');
               var workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
