@@ -23,12 +23,6 @@ const saveVar = async (type, value) => {
         variable: type,
         value: value
       })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
   }
   
   return saveVar(args.type, args.value, args.stype, args.sstype)

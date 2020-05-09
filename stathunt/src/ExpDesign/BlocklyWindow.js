@@ -17,36 +17,60 @@ export default class BlocklyWindow extends Component {
   }
 
   componentDidMount() {
+    fetch("http://localhost:8000/exp_design/" + localStorage.uid)
+            .then((response) => {
+              return response.json()
+            })
+            .then((response) => {
+              this.data = response
+              this.syncWorkspace()
+            });
+          
     setInterval(() => {
       this.updateData()
-      setTimeout(this.syncWorkspace, 200)
-      this.sendDesignData()
-    }, 2000)
+    }, 500)
   }
 
+  // Pulls data from server if chatbot has provided information, posts blockly data otherwise
   updateData() {
-    fetch("http://localhost:8000/exp_design/" + localStorage.uid)
+    fetch("http://localhost:8000/update/" + localStorage.uid)
       .then((response) => {
         return response.json()
       })
       .then((response) => {
-        this.data = response
-      });
+        if (response) {
+          fetch("http://localhost:8000/exp_design/" + localStorage.uid)
+            .then((response) => {
+              return response.json()
+            })
+            .then((response) => {
+              this.data = response
+              this.syncWorkspace()
+            });
+        }else{
+          this.sendDesignData()
+        }
+      })
+
+
   }
 
+  // Parses main design block and sends data to be stored on the server
   sendDesignData() {
     var block = this.refs.blocklyComponent.primaryWorkspace.getTopBlocks()[0]
 
-    if(block === undefined){
-      return 
+    if (block === undefined) {
+      this.syncWorkspace()
+      block = this.refs.blocklyComponent.primaryWorkspace.getTopBlocks()[0]
     }
 
     var data = {}
 
-    data['goal_of_analysis'] = block.getInput('goal').fieldRow[1].getValue()
     data['hypothesis'] = block.getInput('hypothesis').fieldRow[1].getValue()
+    data['goal_of_analysis'] = block.getInput('goal').fieldRow[1].getValue()
+    data['procedure'] = block.getInput('procedure').fieldRow[1].getValue()
     data['sample_size'] = block.getInput('dss').fieldRow[3].getValue()
-    data['procedure'] = block.getInput('dss').fieldRow[1].getValue()
+    data['exp_design'] = block.getInput('dss').fieldRow[1].getValue()
 
     var dv = []
     var conn = block.getInput('dependentVariables').connection
@@ -58,7 +82,7 @@ export default class BlocklyWindow extends Component {
     }
     data['dv'] = dv
 
-    var iv = {}
+    var iv = []
     conn = block.getInput('independentVariables').connection
     while (conn.targetBlock() != null) {
       var name = conn.targetBlock().getInput('name').fieldRow[0].getValue()
@@ -68,13 +92,19 @@ export default class BlocklyWindow extends Component {
         levels.push(vconn.targetBlock().getInput('name').fieldRow[0].getValue())
         vconn = vconn.targetBlock().nextConnection
       }
-      iv[name] = levels
+      iv.push({ 'name': name, 'levels': levels })
       conn = conn.targetBlock().nextConnection
     }
     data['iv'] = iv
-
+    this.data = data
+    fetch('http://localhost:8000/post_design/' + localStorage.uid, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
   }
 
+  // Renders main design block based on information stored in this.data
   syncWorkspace() {
     if (this.refs.blocklyComponent.primaryWorkspace.getTopBlocks().length == 0) {
       var initXml = `<xml><block type="experiment_design"></block></xml>`
@@ -94,7 +124,6 @@ export default class BlocklyWindow extends Component {
     var design = block.getInput('dss')
     design.fieldRow[1].setValue(this.data['exp_design'])
     design.fieldRow[3].setValue(this.data['sample_size'])
-
     while (block.getInput('dependentVariables').connection.targetBlock() != null) {
       block.getInput('dependentVariables').connection.targetBlock().dispose(true)
     }
@@ -111,18 +140,18 @@ export default class BlocklyWindow extends Component {
     while (block.getInput('independentVariables').connection.targetBlock() != null) {
       block.getInput('independentVariables').connection.targetBlock().dispose(true)
     }
-    for (var key in this.data['iv']) {
+    for (var i = 0; i < this.data['iv'].length; i++) {
       var ivblock = this.refs.blocklyComponent.primaryWorkspace.newBlock('independent_variable')
       ivblock.initSvg()
       ivblock.render()
-      ivblock.getInput('name').fieldRow[0].setValue(key)
+      ivblock.getInput('name').fieldRow[0].setValue(this.data['iv'][i]['name'])
       var ivconnection = ivblock.getInput('variables').connection
 
-      for (var i = 0; i < this.data['iv'][key].length; i++) {
+      for (var j = 0; j < this.data['iv'][i]['levels'].length; j++) {
         var valblock = this.refs.blocklyComponent.primaryWorkspace.newBlock('variable')
         valblock.initSvg()
         valblock.render()
-        valblock.getInput('name').fieldRow[0].setValue(this.data['iv'][key][i])
+        valblock.getInput('name').fieldRow[0].setValue(this.data['iv'][i]['levels'][j])
 
         ivconnection.connect(valblock.previousConnection)
       }

@@ -26,24 +26,24 @@ update = {}
 def id_validation(user_id):
     if user_id not in data.keys():
         data[user_id] = {}
-        update[user_id] = True
         data[user_id]['design'] = {
             'hypothesis': "",
             'goal_of_analysis': "",
             'procedure': "",
             'sample_size': "",
             'exp_design': "",
-            'iv': {},
+            'iv': [],
             'dv': [],
         }
-        
+
 @app.get("/update/{user_id}")
 async def updated(user_id: str):
-    if(update[user_id]):
+    id_validation(user_id)
+
+    if(user_id in update.keys() and update[user_id]):
         update[user_id] = False
         return True
     return False
-    
 
 @app.get("/uid")
 async def new_id():
@@ -56,31 +56,52 @@ async def new_id():
         'procedure': "",
         'sample_size': "",
         'exp_design': "",
-        'iv': {},
+        'iv': [],
         'dv': [],
     }
     print("New user_id " + (user_id) + " generated")
     return {"user_id": (user_id)}
 
-class DesignData(BaseModel):
-    hypothesis: str
-    goal_of_analysis: str 
-    procedure: str 
-    sample_size: str 
-    exp_design: str 
-    iv: dict = {}
-    dv: list = []
+
 
 @app.get("/exp_design/{user_id}")
 async def get_design(user_id: str):
     id_validation(user_id)
     print(data[user_id]['design'])
+    update[user_id] = False
     return data[user_id]['design']
 
-@app.post("/exp_design/{user_id}")
-async def update_design(user_id: str, info: DesignData):
-    print("Overwriting design to " + info)
-    data[user_id]['design'] = info
+class Dv(BaseModel):
+    name: str
+    measurement: str
+
+class Iv(BaseModel):
+    name: str
+    levels: List[str]
+
+class DesignData(BaseModel):
+    hypothesis: str
+    goal_of_analysis: str
+    procedure: str 
+    sample_size: int
+    exp_design: str
+    dv: List[Dv]
+    iv: List[Iv]
+
+@app.post("/post_design/{user_id}")
+async def post_designs(user_id: str, info: DesignData):
+    id_validation(user_id)
+
+    data[user_id]['design']['hypothesis'] = info.hypothesis
+    data[user_id]['design']['goal_of_analysis'] = info.goal_of_analysis
+    data[user_id]['design']['procedure'] = info.procedure
+    data[user_id]['design']['sample_size'] = info.sample_size
+    data[user_id]['design']['dv'] = info.dv
+    data[user_id]['design']['iv'] = info.iv
+
+    print("Design data updated for user ", user_id)
+    print("To: ", data[user_id]['design'])
+    return data
 
 class DependentVariable(BaseModel):
     user_id: str
@@ -92,9 +113,11 @@ class DependentVariable(BaseModel):
 @app.post("/exp_design/dv")
 async def update_dv(info: DependentVariable):
     id_validation(info.user_id)
-
+    
     data[info.user_id]['design']['dv'].append({'name': info.name, 'measurement': info.measurement, 'add_info': info.add_info})
     print(data[info.user_id]['design'])
+    update[info.user_id] = True
+
     return data[info.user_id]
 
 class IndependentVariable(BaseModel):
@@ -106,8 +129,10 @@ class IndependentVariable(BaseModel):
 async def add_iv(info: IndependentVariable):
     id_validation(info.user_id)
 
-    data[info.user_id]['design']['iv'][info.name] = info.levels
+    data[info.user_id]['design']['iv'].append({'name': info.name, 'levels': info.levels})
     print(data[info.user_id]['design'])
+    update[info.user_id] = True
+
     return data[info.user_id]
 
 
@@ -124,6 +149,8 @@ async def update_design(info: DesignObj):
         return "Variable name not valid information key"
 
     data[info.user_id]['design'][info.variable] = info.value
+    update[info.user_id] = True
+
     print("Experiment design updated for " + info.user_id)
     print(data[info.user_id]['design'])
     return data[info.user_id]
