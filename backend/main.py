@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 import uuid
 import json
 from pydantic import BaseModel
@@ -20,7 +20,14 @@ data = {}
 chat_overwrite = True
 update = {}
 
-# Helper Functions
+# Dataset
+@app.post("/uploadfile/{user_id}")
+async def create_upload_file(user_id: str, file: UploadFile = File(...)):
+    file.read()
+    print(file.filename)
+    print(file.file)
+    return {"filename": file.filename}
+
 
 
 def id_validation(user_id):
@@ -63,6 +70,8 @@ async def new_id():
     return {"user_id": (user_id)}
 
 
+
+# Experimental Design
 
 @app.get("/exp_design/{user_id}")
 async def get_design(user_id: str):

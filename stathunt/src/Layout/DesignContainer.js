@@ -10,7 +10,7 @@ export default class DesignContainer extends Component{
 
     render(){
         return <div>
-            <BlocklyWindow />
+            <BlocklyWindow hidden={this.props.hidden}/>
         </div>
     }
 }

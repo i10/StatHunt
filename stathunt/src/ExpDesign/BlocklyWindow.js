@@ -26,13 +26,19 @@ export default class BlocklyWindow extends Component {
               this.syncWorkspace()
             });
           
-    setInterval(() => {
+    window.myInterval = setInterval(() => {
       this.updateData()
     }, 500)
   }
 
+  componentWillUnmount(){
+    clearInterval(window.myInterval) 
+  }
   // Pulls data from server if chatbot has provided information, posts blockly data otherwise
   updateData() {
+    if(this.props.hidden){
+      return
+    }
     fetch("http://localhost:8000/update/" + localStorage.uid)
       .then((response) => {
         return response.json()

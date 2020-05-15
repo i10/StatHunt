@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import MUIDatatable from 'mui-datatables';
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import MaterialTable from 'material-table';
+
 const mui_columns = ["Participant", "Input Method", "Task Completion Time (s)"];
 const mt_columns = (function () {
     var out = [];
@@ -13,21 +14,6 @@ const mt_columns = (function () {
     }
     return out;
 });
-
-// var mui_data = function () {
-//     var data = [];
-//     var gen = [0, true];
-//     for (var i = 0; i < 1000; i++) {
-//         var row = [];
-//         row.push(gen[0]);
-//         row.push((gen[1] ? "QWERTY" : "QWERTZ"));
-//         row.push(Math.floor(Math.random() * 70) + 10);
-//         gen[0]++;
-//         gen[1] = !gen[1];
-//         data.push(row)
-//     }
-//     return data
-// }
 
 var mt_data = function () {
     var data = [];
@@ -41,19 +27,42 @@ var mt_data = function () {
         gen[1] = !gen[1];
         data.push(row)
     }
-    return data
+    return []
 }
 
 export default class DataWindow extends Component {
+    constructor(props) {
+        super(props)
+
+        this.fileUpload = this.fileUpload.bind(this)
+    }
+
+    fileUpload() {
+        var data = new FormData()
+        data.append("file", document.getElementById('file-upload').files[0])
+        fetch('http://localhost:8000/uploadfile/' + localStorage.uid, {
+            // content-type header should not be specified!
+            method: 'POST',
+            body: data,
+        })
+            .then(response => response.json())
+            .then(success => {
+                console.log("File Succesfully Uploaded")
+            })
+            .catch(error => console.log(error)
+            );
+    }
+
     render() {
-        // const options = {
-        //     responsive: "scrollMaxHeight",
-        //     print: false,
-        //     download: false
-        // }
         return <Grid container>
-            <Grid item sm={9} style={{ margin: '40px' }}>
-                {/* <MUIDatatable title={"Rat Lab 1"} data={table_data()} columns={columns} options={options} /> */}
+            <Grid item sm={12} style={{ margin: '60px' }}>
+                    <input
+                        accept="*.csv"
+                        id="file-upload"
+                        multiple
+                        type="file"
+                        onChange={this.fileUpload}
+                    />
                 <MaterialTable
                     columns={mt_columns()}
                     data={mt_data()}
@@ -79,7 +88,6 @@ export default class DataWindow extends Component {
                         },
                     ]}
                 />
-                <Grid item sm={3} />
             </Grid>
         </Grid>
     }
