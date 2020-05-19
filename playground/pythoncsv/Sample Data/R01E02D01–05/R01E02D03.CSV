@@ -1,0 +1,19 @@
+CreationTime;UserID;Identifier;Screen Height;Age;Gender;Handedness;Pen Hand;Screen Size;Best Orientation Small;NN Orientation Small;Worst Orientation Small;Best Orientation Big;NN Orientation Big;Worst Orientation Big
+2018-07-04 12:40:02 +0000;1;Questionnare;;26;male;left;left;small;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left;Camera Right
+2018-07-04 13:47:13 +0000;2;Questionnare;;25;male;right;right;small;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left;Camera Top
+2018-07-04 14:34:37 +0000;3;Questionnare;;30;n/a;right;right;big;Camera Left;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top
+2018-07-04 15:21:46 +0000;4;Questionnare;;24;male;right;right;big;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-05 14:52:26 +0000;5;Questionnare;;26;n/a;right;right;big;Camera Left;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top
+2018-07-05 15:36:21 +0000;6;Questionnare;;24;female;right;right;small;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left
+2018-07-06 09:10:23 +0000;7;Questionnare;;27;male;right;right;small;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left
+2018-07-06 10:24:34 +0000;8;Questionnare;;24;male;right;right;big;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-06 12:57:53 +0000;9;Questionnare;;32;male;right;right;big;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left
+2018-07-06 13:29:42 +0000;10;Questionnare;;26;female;right;right;small;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-09 09:51:20 +0000;11;Questionnare;;23;male;right;right;big;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-09 11:12:04 +0000;12;Questionnare;;23;female;right;right;equal;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left;Camera Top
+2018-07-09 12:34:18 +0000;13;Questionnare;;24;male;right;right;small;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-09 13:01:57 +0000;14;Questionnare;;23;male;right;right;big;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left
+2018-07-09 13:48:34 +0000;15;Questionnare;;24;male;right;left;small;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left;Camera Right
+2018-07-09 14:57:10 +0000;16;Questionnare;;22;male;right;right;big;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-10 11:38:16 +0000;17;Questionnare;;27;female;right;right;big;Camera Top;Camera Right;Camera Left;Camera Top;Camera Right;Camera Left
+2018-07-11 11:15:01 +0000;18;Questionnare;;32;male;right;right;equal;Camera Right;Camera Top;Camera Left;Camera Right;Camera Top;Camera Left

@@ -1,0 +1,109 @@
+UserID;Device;Orientation;Grasp
+1;big;camera to hand;Front Grasp
+1;big;portrait;Portrait on Little Finger
+1;big;camera away;Landscape on Little Finger
+1;small;camera to hand;Front Grasp
+1;small;portrait;Portrait on Little Finger
+1;small;camera away;Clamped between Index and Middle Finger
+2;big;camera away;Landscape on Little Finger
+2;big;camera to hand;Landscape on Thumb Tray
+2;big;portrait;Portrait on Little Finger
+2;small;portrait;Portrait on Little Finger
+2;small;camera to hand;Landscape on Thumb Tray
+2;small;camera away;Landscape on Little Finger
+3;small;camera to hand;Pinch with Middle Finger
+3;small;camera away;Pinch with Middle Finger
+3;small;portrait;Surrounding Grasp
+3;big;portrait;Surrounding Grasp
+3;big;camera away;Pinch with Middle Finger
+3;big;camera to hand;Pinch with Middle Finger
+4;big;camera to hand;Pinch with Middle Finger
+4;big;portrait;Portrait on Little Finger
+4;big;camera away;Landscape on Little Finger
+4;small;camera away;Landscape on Little Finger
+4;small;portrait;Portrait on Little Finger
+4;small;camera to hand;Landscape on Little Finger
+5;small;portrait;Portrait on Little Finger
+5;small;camera to hand;Landscape on Thumb Tray
+5;small;camera away;Landscape on Thumb Tray
+5;big;camera away;Landscape on Thumb Tray
+5;big;camera to hand;Landscape on Thumb Tray
+5;big;portrait;Portrait on Little Finger
+6;big;portrait;Portrait on Little Finger
+6;big;camera away;Landscape on Little Finger
+6;big;camera to hand;Landscape on Little Finger
+6;small;camera to hand;Landscape on Little Finger
+6;small;camera away;Landscape on Little Finger
+6;small;portrait;Portrait on Little Finger
+7;small;camera away;Landscape on Little Finger
+7;small;portrait;Portrait on Little Finger
+7;small;camera to hand;Landscape on Thumb Tray
+7;big;camera to hand;Landscape on Thumb Tray
+7;big;portrait;Portrait on Little Finger
+7;big;camera away;Landscape on Little Finger
+8;big;camera away;Front Grasp
+8;big;camera to hand;Front Grasp
+8;big;portrait;Portrait on Little Finger
+8;small;camera away;Landscape on Little Finger
+8;small;camera to hand;Landscape on Little Finger
+8;small;portrait;Portrait on Little Finger
+9;small;camera to hand;Landscape on Thumb Tip
+9;small;camera away;Pinch
+9;small;portrait;Surrounding Grasp
+9;big;portrait;Portrait on Little Finger
+9;big;camera away;Landscape on Little Finger
+9;big;camera to hand;Landscape on Thumb Tray
+10;big;camera to hand;Landscape on Little Finger Tip
+10;big;portrait;Portrait on Thumb
+10;big;camera away;Pinch
+10;small;camera away;Pinch
+10;small;portrait;Portrait on Little Finger
+10;small;camera to hand;Landscape on Little Finger Tip
+11;small;portrait;Portrait on Little Finger
+11;small;camera to hand;Landscape on Thumb Tray
+11;small;camera away;Landscape on Little Finger
+11;big;camera away;Landscape on Little Finger
+11;big;camera to hand;Landscape on Little Finger
+11;big;portrait;Surrounding Grasp
+12;big;portrait;Portrait on Little Finger
+12;big;camera away;Landscape on Thumb Tray
+12;big;camera to hand;Landscape on Thumb Tray
+12;small;camera to hand;Landscape on Thumb Tray
+12;small;camera away;Landscape on Thumb Tray
+12;small;portrait;Portrait on Little Finger
+13;small;camera away;Landscape on Thumb Tray
+13;small;portrait;Surrounding Grasp
+13;small;camera to hand;Landscape on Thumb Tray
+13;big;camera to hand;Landscape on Little Finger
+13;big;portrait;Surrounding Grasp
+13;big;camera away;Landscape on Little Finger
+14;big;camera away;Pinch
+14;big;camera to hand;Pinch
+14;big;portrait;Surrounding Grasp
+14;small;portrait;Surrounding Grasp
+14;small;camera to hand;Pinch
+14;small;camera away;Pinch
+15;small;camera away;Landscape on Little Finger
+15;small;camera to hand;Front Grasp
+15;small;portrait;Portrait on Little Finger
+15;big;portrait;Portrait on Little Finger
+15;big;camera to hand;Front Grasp
+15;big;camera away;Landscape on Little Finger
+16;big;camera to hand;Landscape on Little Finger
+16;big;portrait;Surrounding Grasp
+16;big;camera away;Landscape on Little Finger
+16;small;camera away;Landscape on Little Finger
+16;small;portrait;Surrounding Grasp
+16;small;camera to hand;Landscape on Little Finger
+17;small;portrait;Surrounding Grasp
+17;small;camera to hand;Pinch with Middle Finger
+17;small;camera away;Pinch with Middle Finger
+17;big;camera away;Pinch with Middle Finger
+17;big;camera to hand;Pinch with Middle Finger
+17;big;portrait;High Surrounding Grasp
+18;big;portrait;Portrait on Little Finger
+18;big;camera away;Landscape on Little Finger
+18;big;camera to hand;Landscape on Little Finger
+18;small;camera to hand;Landscape on Little Finger
+18;small;camera away;Landscape on Little Finger
+18;small;portrait;Portrait on Little Finger

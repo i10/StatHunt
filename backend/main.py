@@ -1,6 +1,8 @@
 from fastapi import FastAPI, File, UploadFile
 import uuid
 import json
+import csv
+import pandas as pd
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
@@ -20,16 +22,6 @@ data = {}
 chat_overwrite = True
 update = {}
 
-# Dataset
-@app.post("/uploadfile/{user_id}")
-async def create_upload_file(user_id: str, file: UploadFile = File(...)):
-    file.read()
-    print(file.filename)
-    print(file.file)
-    return {"filename": file.filename}
-
-
-
 def id_validation(user_id):
     if user_id not in data.keys():
         data[user_id] = {}
@@ -43,6 +35,24 @@ def id_validation(user_id):
             'dv': [],
         }
 
+# Dataset
+@app.post("/uploadfile/{user_id}")
+async def create_upload_file(user_id: str, file: UploadFile = File(...)):
+    data[user_id]['dataset'] = file.file
+    data[user_id]['dataframe'] = pd.read_csv(file.file)
+    print(data[user_id]['dataframe'])
+    return {"filename": file.filename}
+
+@app.get('/dataset/{user_id}')
+async def get_dataframe(user_id: str):
+    id_validation(user_id)
+    try:
+        data[user_id]['dataframe']
+        return data[user_id]['dataframe'].to_json()
+    except:
+        return ''
+
+
 @app.get("/update/{user_id}")
 async def updated(user_id: str):
     id_validation(user_id)
@@ -51,6 +61,7 @@ async def updated(user_id: str):
         update[user_id] = False
         return True
     return False
+
 
 @app.get("/uid")
 async def new_id():
@@ -70,7 +81,6 @@ async def new_id():
     return {"user_id": (user_id)}
 
 
-
 # Experimental Design
 
 @app.get("/exp_design/{user_id}")
@@ -80,22 +90,26 @@ async def get_design(user_id: str):
     update[user_id] = False
     return data[user_id]['design']
 
+
 class Dv(BaseModel):
     name: str
     measurement: str
+
 
 class Iv(BaseModel):
     name: str
     levels: List[str]
 
+
 class DesignData(BaseModel):
     hypothesis: str
     goal_of_analysis: str
-    procedure: str 
+    procedure: str
     sample_size: int
     exp_design: str
     dv: List[Dv]
     iv: List[Iv]
+
 
 @app.post("/post_design/{user_id}")
 async def post_designs(user_id: str, info: DesignData):
@@ -110,35 +124,40 @@ async def post_designs(user_id: str, info: DesignData):
 
     print("Design data updated for user ", user_id)
     print("To: ", data[user_id]['design'])
-    return data
+    return data[user_id]['design']
+
 
 class DependentVariable(BaseModel):
     user_id: str
     name: str
     measurement: str
-    add_info: str 
+    add_info: str
 
 
 @app.post("/exp_design/dv")
 async def update_dv(info: DependentVariable):
     id_validation(info.user_id)
-    
-    data[info.user_id]['design']['dv'].append({'name': info.name, 'measurement': info.measurement, 'add_info': info.add_info})
+
+    data[info.user_id]['design']['dv'].append(
+        {'name': info.name, 'measurement': info.measurement, 'add_info': info.add_info})
     print(data[info.user_id]['design'])
     update[info.user_id] = True
 
     return data[info.user_id]
+
 
 class IndependentVariable(BaseModel):
     user_id: str
     name: str
     levels: List[str]
 
+
 @app.post("/exp_design/iv")
 async def add_iv(info: IndependentVariable):
     id_validation(info.user_id)
 
-    data[info.user_id]['design']['iv'].append({'name': info.name, 'levels': info.levels})
+    data[info.user_id]['design']['iv'].append(
+        {'name': info.name, 'levels': info.levels})
     print(data[info.user_id]['design'])
     update[info.user_id] = True
 
@@ -149,6 +168,7 @@ class DesignObj(BaseModel):
     user_id: str
     variable: str
     value: str
+
 
 @app.post("/exp_design/")
 async def update_design(info: DesignObj):
