@@ -37,8 +37,10 @@ export default class App extends Component {
   }
 
   viewChange(event, newValue) {
+    console.log("View set to: " + newValue)
     this.setState({ view: newValue })
   }
+
   render() {
     const theme = createMuiTheme({
       palette: {
@@ -75,7 +77,7 @@ export default class App extends Component {
         <div hidden={this.state.view !== 1}>
           <Grid container style={{ height: '100%' }}>
             <Grid item sm={8}>
-              <DataContainer />
+              <DataContainer hidden={this.state.view !== 1}/>
             </Grid>
             <Grid item sm={4} />
           </Grid>

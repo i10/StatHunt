@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 // import MUIDatatable from 'mui-datatables';
 import { Grid } from '@material-ui/core';
-import DataTable from './DataTable'
-
+import DataSet from './DataSet.js'
 export default class DataWindow extends Component {
     constructor(props) {
         super(props)
@@ -39,7 +38,7 @@ export default class DataWindow extends Component {
                     />
                 </Grid>
                 <Grid item sm={12}>
-                    <DataTable />
+                    <DataSet hidden={this.props.hidden} />
                 </Grid>
             </Grid>
         </Grid>

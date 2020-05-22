@@ -19,14 +19,73 @@ const useStyles = makeStyles({
   },
 });
 
-export default function DataTable() {
-  const classes = useStyles();
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+export default class DataTable extends React.Component {
+  constructor(props) {
+    const classes = useStyles();
+    this.state = {
+      page: 0,
+      rowsPerPage: 10
+    }
+  }
 
-  
+  handleChangePage(event, newPage){
+    this.setState({
+      page: newPage,
+      rowsPerPage: this.state.rowsPerPage
+    });
+  };
 
+  handleChangeRowsPerPage(event) {
+    this.setState({
+      page: 0,
+      rowsPerPage: +event.target.value
+    });
+  };
+
+  updateData(){
+    fetch("http://localhost:8000/dataset/" + localStorage.uid)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (localStorage.dataset != response && response != '') {
+          console.log(response)
+          localStorage.dataset = (response);
+          setPage(1)
+          setPage(0)
+        }
+      })
+    if (localStorage.getItem('dataset') == "") {
+      return
+    }
+    var dataset = JSON.parse(localStorage.dataset)
+    for (var x in Object.keys(dataset)) {
+      columns.push({
+        id: x,
+        label: x,
+        minWidth: 170,
+        align: 'right'
+      })
+    }
+  }
+
+  componentWillMount(){
+    updateData()
+    window.datasetInterval = setInterval(() => {
+      updateData()
+    }, 1000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(window.datasetInterval)
+  }
+
+render(){
   var columns = (() => {
+    if (localStorage.dataset == undefined) {
+      return []
+    }
+    console.log(localStorage.dataset)
     var out = []
     var dataset = Object.entries(JSON.parse(localStorage.dataset))
     for (var x in dataset) {
@@ -52,44 +111,7 @@ export default function DataTable() {
     return out
   })()
 
-  const updateData = () => {
-    fetch("http://localhost:8000/dataset/" + localStorage.uid)
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        if (localStorage.dataset != response) {
-          localStorage.dataset = (response);
-          setPage(1)
-          setPage(0)
-        }
-      })
-    var dataset = JSON.parse(localStorage.dataset)
-    for (var x in Object.keys(dataset)) {
-      columns.push({
-        id: x,
-        label: x,
-        minWidth: 170,
-        align: 'right'
-      })
-    }
-  }
-  useEffect(() => {
-    clearInterval(window.myInterval) 
-    updateData()
-    window.myInterval = setInterval(() => {
-      updateData()
-    }, 1000)
-  },[]);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  
 
   return (
     <Paper >
@@ -137,4 +159,6 @@ export default function DataTable() {
       />
     </Paper>
   );
+}
+  
 }
