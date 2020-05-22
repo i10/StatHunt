@@ -310,5 +310,38 @@
     "createdBy": "admin",
     "createdOn": "2020-04-21T15:03:23.950Z",
     "modifiedOn": "2020-04-21T15:03:23.950Z"
+  },
+  {
+    "id": "builtin_text-wQSwHx",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Let's move on to the Dataset."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-22T08:50:22.494Z",
+    "modifiedOn": "2020-05-22T08:50:22.494Z"
+  },
+  {
+    "id": "builtin_text-qWrSVE",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Please upload your data as a csv to the left. Once you've done so and can see it being represented on the table let me know!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-22T08:51:47.112Z",
+    "modifiedOn": "2020-05-22T09:54:28.029Z"
+  },
+  {
+    "id": "builtin_text-fCjppS",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Looks like you haven't uploaded anything."
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-22T09:53:09.033Z",
+    "modifiedOn": "2020-05-22T09:53:09.033Z"
   }
 ]

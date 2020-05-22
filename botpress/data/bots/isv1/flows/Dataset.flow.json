@@ -5,50 +5,59 @@
   "description": "",
   "nodes": [
     {
-      "id": "e5dcc54027",
+      "id": "91054bb8e3",
       "name": "entry",
-      "onEnter": [],
-      "onReceive": null,
       "next": [
         {
           "condition": "true",
-          "node": "choice-6f42d5"
-        },
-        {
-          "condition": "true",
-          "node": ""
+          "node": "node-b447"
         }
       ],
+      "onEnter": [
+        "say #!builtin_text-wQSwHx"
+      ],
+      "onReceive": null,
       "type": "standard"
     },
     {
-      "id": "skill-6f42d5",
-      "type": "skill-call",
-      "skill": "choice",
-      "name": "choice-6f42d5",
-      "flow": "skills/choice-6f42d5.flow.json",
+      "id": "a3ba186a30",
+      "name": "node-b447",
       "next": [
         {
-          "caption": "User picked [BOTPRES...]",
-          "condition": "temp['skill-choice-ret-weffjfz0qr'] == \"BOTPRESS.FILE_UPLOAD\"",
-          "node": "node-ffad"
+          "condition": "true",
+          "node": "node-9bf3"
         },
         {
-          "caption": "On failure",
           "condition": "true",
-          "node": ""
+          "node": "node-0164"
         }
       ],
-      "onEnter": null,
-      "onReceive": null
+      "onEnter": [
+        "say #!builtin_text-qWrSVE"
+      ],
+      "onReceive": [],
+      "type": "standard"
     },
     {
-      "id": "30f5e5edd3",
-      "name": "node-ffad",
-      "next": [],
-      "onEnter": [
-        "say #!builtin_text-T1oNIM"
+      "id": "f4e411689c",
+      "name": "node-9bf3",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-b447"
+        }
       ],
+      "onEnter": [
+        "say #!builtin_text-fCjppS"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "83f65de420",
+      "name": "node-0164",
+      "next": [],
+      "onEnter": [],
       "onReceive": null,
       "type": "standard"
     }

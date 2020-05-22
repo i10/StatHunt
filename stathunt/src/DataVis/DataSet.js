@@ -31,6 +31,9 @@ export default class DataSet extends React.Component {
     }
 
     componentWillMount() {
+        if(localStorage.dataset == null){
+            localStorage.dataset = '{}'
+        }
         this.updateDataset();
         window.datasetInterval = setInterval(() => {
             this.updateDataset()

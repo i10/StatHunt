@@ -6,6 +6,8 @@ import pandas as pd
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+from diffprivlib.mechanisms import Laplace
+
 
 # Initialisation
 app = FastAPI()
@@ -21,6 +23,7 @@ app.add_middleware(
 data = {}
 chat_overwrite = True
 update = {}
+
 
 def id_validation(user_id):
     if user_id not in data.keys():
@@ -43,6 +46,7 @@ async def create_upload_file(user_id: str, file: UploadFile = File(...)):
     print(data[user_id]['dataframe'])
     return {"filename": file.filename}
 
+
 @app.get('/dataset/{user_id}')
 async def get_dataframe(user_id: str):
     id_validation(user_id)
@@ -51,6 +55,13 @@ async def get_dataframe(user_id: str):
         return data[user_id]['dataframe'].to_json()
     except:
         return ''
+
+
+@app.post("/dataset/obfuscate/{user_id}")
+async def obf_data(user_id: str, column: str):
+    laplace = Laplace()
+    laplace.set_epsilon(2)
+    laplace.set_sensitivity(20)
 
 
 @app.get("/update/{user_id}")

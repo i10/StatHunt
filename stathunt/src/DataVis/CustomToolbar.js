@@ -22,7 +22,6 @@ class CustomToolbar extends React.Component {
       </React.Fragment>
     );
   }
-
 }
 
 export default (CustomToolbar);
