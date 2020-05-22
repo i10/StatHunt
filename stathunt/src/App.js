@@ -46,7 +46,6 @@ export default class App extends Component {
       palette: {
         primary: {
           main: '#05e297',
-          contrastText: 'inherit'
         },
         secondary: {
           main: '#5A6D7D'

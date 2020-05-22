@@ -13,7 +13,7 @@ export default class DataSet extends React.Component {
     }
 
     updateDataset() {
-        if (this.props.hidden) {
+        if(this.props.hidden){
             return
         }
         fetch("http://localhost:8000/dataset/" + localStorage.uid)
@@ -31,7 +31,7 @@ export default class DataSet extends React.Component {
     }
 
     componentWillMount() {
-        if(localStorage.dataset == null){
+        if(localStorage.dataset == null || localStorage.dataset == undefined){
             localStorage.dataset = '{}'
         }
         this.updateDataset();
@@ -45,23 +45,26 @@ export default class DataSet extends React.Component {
     }
 
     render() {
+        if(this.props.hidden){
+            return <div></div>
+        }
         var dataset = Object.entries(JSON.parse(localStorage.dataset))
         var rows = []
-
-        for (var i = 0; i < Object.entries(dataset[0][1]).length; i++) {
-            var row = []
-            for (var x in dataset) {
-                row.push(dataset[x][1][i.toString()])
-            }
-            rows.push(row)
-        }
-
         var columns = []
 
-        for (var x in (dataset)) {
-            columns.push(
-                dataset[x][0]
-            )
+        if(dataset.length != 0){
+            for (var i = 0; i < Object.entries(dataset[0][1]).length; i++) {
+                var row = []
+                for (var x in dataset) {
+                    row.push(dataset[x][1][i.toString()])
+                }
+                rows.push(row)
+            }
+            for (var x in (dataset)) {
+                columns.push(
+                    dataset[x][0]
+                )
+            }
         }
 
         return (
