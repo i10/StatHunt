@@ -9,7 +9,7 @@
 const axios = require('axios');
 
 const postVariable = async () => {
-    axios.post('http://localhost:8000/exp_design/dv', {
+    axios.post('http://78.46.171.75:8000/exp_design/dv', {
         user_id: event.target,
         name: user.design['dv'][temp.curr_variable-2]['name'],
         measurement: user.design['dv'][temp.curr_variable-2]['scale_of_measurement'],

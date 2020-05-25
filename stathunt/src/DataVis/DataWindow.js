@@ -12,7 +12,7 @@ export default class DataWindow extends Component {
     fileUpload() {
         var data = new FormData()
         data.append("file", document.getElementById('file-upload').files[0])
-        fetch('http://localhost:8000/uploadfile/' + localStorage.uid, {
+        fetch('http://78.46.171.75:8000/uploadfile/' + localStorage.uid, {
             // content-type header should not be specified!
             method: 'POST',
             body: data,

@@ -8,7 +8,7 @@
 const axios = require('axios');
 
 const getView = async () => {
-    axios.get('http://localhost:8000/getview/' + event.target)
+    axios.get('http://78.46.171.75:8000/getview/' + event.target)
         .then(function (response) {
             user.curr_view = (response.data);
         })

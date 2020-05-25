@@ -17,7 +17,7 @@ export default class DataSet extends React.Component {
         if (this.props.hidden) {
             return
         }
-        fetch("http://localhost:8000/dataset/" + localStorage.uid)
+        fetch("http://78.46.171.75:8000/dataset/" + localStorage.uid)
             .then((response) => {
                 return response.json();
             })

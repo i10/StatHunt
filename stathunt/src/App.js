@@ -16,7 +16,7 @@ export default class App extends Component {
 
   componentDidMount() {
     if (localStorage.uid == null) {
-      fetch("http://localhost:8000/uid")
+      fetch("http://78.46.171.75:8000/uid")
         .then((response) => {
           return response.json();
         })
@@ -29,7 +29,7 @@ export default class App extends Component {
     }
 
     window.botpressWebChat.init({
-      host: 'http://localhost:3000',
+      host: 'http://78.46.171.75:3000',
       botId: 'isv1',
       userId: localStorage.uid,
       // extraStylesheet: '/assets/modules/channel-web/chat.css',
@@ -38,7 +38,7 @@ export default class App extends Component {
       showConversationsButton: false
     })
     window.viewUpdate = setInterval(() => {
-      fetch("http://localhost:8000/getview/" + localStorage.uid)
+      fetch("http://78.46.171.75:8000/getview/" + localStorage.uid)
         .then((response) => {
           return response.json();
         })
@@ -52,7 +52,7 @@ export default class App extends Component {
 
   viewChange(event, newValue) {
     console.log("View set to: " + newValue)
-    fetch('http://localhost:8000/setview/' + localStorage.uid + "?view=" + newValue, {
+    fetch('http://78.46.171.75:8000/setview/' + localStorage.uid + "?view=" + newValue, {
       method: 'POST',
       body: {},
     })

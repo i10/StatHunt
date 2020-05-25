@@ -18,7 +18,7 @@ const saveVar = async (type, value) => {
     }
     user.design[type] = value;
 
-    axios.post('http://localhost:8000/exp_design/', {
+    axios.post('http://78.46.171.75:8000/exp_design/', {
         user_id: event.target,
         variable: type,
         value: value
