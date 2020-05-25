@@ -20,8 +20,7 @@ export default class DataSet extends React.Component {
                 return response.json();
             })
             .then((response) => {
-                if (localStorage.dataset != response && response != '') {
-                    console.log(response)
+                if (localStorage.dataset !== response && response !== '') {
                     localStorage.dataset = (response);
                     this.setState({ refresh: !this.state.refresh })
                 }
@@ -30,7 +29,7 @@ export default class DataSet extends React.Component {
     }
 
     componentWillMount() {
-        if(localStorage.dataset == null || localStorage.dataset == undefined){
+        if(localStorage.dataset === null || localStorage.dataset === undefined){
             localStorage.dataset = '{}'
         }
         this.updateDataset();
@@ -51,7 +50,7 @@ export default class DataSet extends React.Component {
         var rows = []
         var columns = []
 
-        if(dataset.length != 0){
+        if(dataset.length !== 0){
             for (var i = 0; i < Object.entries(dataset[0][1]).length; i++) {
                 var row = []
                 for (var x in dataset) {
@@ -59,9 +58,9 @@ export default class DataSet extends React.Component {
                 }
                 rows.push(row)
             }
-            for (var x in (dataset)) {
+            for (var y in (dataset)) {
                 columns.push(
-                    dataset[x][0]
+                    dataset[y][0]
                 )
             }
         }

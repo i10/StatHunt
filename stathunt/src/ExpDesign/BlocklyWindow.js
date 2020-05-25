@@ -80,8 +80,9 @@ export default class BlocklyWindow extends Component {
 
     var dv = []
     var conn = block.getInput('dependentVariables').connection
+    var name
     while (conn.targetBlock() != null) {
-      var name = conn.targetBlock().getInput('name').fieldRow[0].getValue()
+      name = conn.targetBlock().getInput('name').fieldRow[0].getValue()
       var measurement = conn.targetBlock().getInput('scale_of_measurement').fieldRow[1].getValue()
       dv.push({ 'name': name, 'measurement': measurement })
       conn = conn.targetBlock().nextConnection
@@ -91,7 +92,7 @@ export default class BlocklyWindow extends Component {
     var iv = []
     conn = block.getInput('independentVariables').connection
     while (conn.targetBlock() != null) {
-      var name = conn.targetBlock().getInput('name').fieldRow[0].getValue()
+      name = conn.targetBlock().getInput('name').fieldRow[0].getValue()
       var levels = []
       var vconn = conn.targetBlock().getInput('variables').connection
       while (vconn.targetBlock() != null) {
@@ -112,7 +113,7 @@ export default class BlocklyWindow extends Component {
 
   // Renders main design block based on information stored in this.data
   syncWorkspace() {
-    if (this.refs.blocklyComponent.primaryWorkspace.getTopBlocks().length == 0) {
+    if (this.refs.blocklyComponent.primaryWorkspace.getTopBlocks().length === 0) {
       var initXml = `<xml><block type="experiment_design"></block></xml>`
       Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(initXml), Blockly.getMainWorkspace());
     }
@@ -146,7 +147,7 @@ export default class BlocklyWindow extends Component {
     while (block.getInput('independentVariables').connection.targetBlock() != null) {
       block.getInput('independentVariables').connection.targetBlock().dispose(true)
     }
-    for (var i = 0; i < this.data['iv'].length; i++) {
+    for (i = 0; i < this.data['iv'].length; i++) {
       var ivblock = this.refs.blocklyComponent.primaryWorkspace.newBlock('independent_variable')
       ivblock.initSvg()
       ivblock.render()

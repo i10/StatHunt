@@ -32,7 +32,7 @@ export default class App extends Component {
       host: 'http://78.46.171.75:3000',
       botId: 'isv1',
       userId: localStorage.uid,
-      // extraStylesheet: '/assets/modules/channel-web/chat.css',
+      // extraStylesheet: '/assets/modules/http://localhost:3000/assets/modules/channel-web/inject.jschannel-web/chat.css',
       enableReset: false,
       enableTranscriptDownload: false,
       showConversationsButton: false
