@@ -1,6 +1,5 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-import CustomToolbar from './CustomToolbar.js';
 
 
 
@@ -72,11 +71,6 @@ export default class DataSet extends React.Component {
                 title={"Experiment Data"}
                 data={rows}
                 columns={columns}
-                options={{customToolbar: () => {
-                    return (
-                      <CustomToolbar />
-                    );
-                  }}}
             />
         );
     }

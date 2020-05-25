@@ -1,9 +1,8 @@
-//CHECKSUM:295521a4e8ec8c9045df4e4baa058db3ad7b75e1428607cada4042bbb6cb12c4
 const chatOptions = {
   hideWidget: true,
   config: {
-    enableReset: true,
-    enableTranscriptDownload: true
+    enableReset: false,
+    enableTranscriptDownload: false
   }
 }
 
@@ -13,5 +12,11 @@ const params = {
   options: JSON.stringify(chatOptions)
 }
 
-// Bot will be available at $EXTERNAL_URL/s/$BOT_NAME
-bp.http.createShortLink(botId, `${process.EXTERNAL_URL}/lite/${botId}/`, params)
+setTimeout(() => {
+  try {
+    bp.http.deleteShortLink(botId)
+  } catch (e) {}
+
+  // Bot will be available at $EXTERNAL_URL/s/$BOT_NAME
+  bp.http.createShortLink(botId, `${process.EXTERNAL_URL}/lite/${botId}/`, params)
+}, 500)

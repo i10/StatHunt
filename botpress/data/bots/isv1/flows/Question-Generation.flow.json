@@ -1,42 +1,24 @@
 {
   "version": "0.0.1",
-  "catchAll": {},
-  "startNode": "choice-0146e0",
+  "catchAll": {
+    "onReceive": [],
+    "next": [
+      {
+        "condition": "event.preview == '/back'",
+        "node": "Menu.flow.json"
+      }
+    ]
+  },
+  "startNode": "node-2fa9",
   "description": "",
   "nodes": [
-    {
-      "id": "skill-0146e0",
-      "type": "skill-call",
-      "skill": "choice",
-      "name": "choice-0146e0",
-      "flow": "skills/choice-0146e0.flow.json",
-      "next": [
-        {
-          "caption": "User picked [stackex...]",
-          "condition": "temp['skill-choice-ret-2hzqkc88am'] == \"stackexchange\"",
-          "node": "stackexchange"
-        },
-        {
-          "caption": "User picked [share]",
-          "condition": "temp['skill-choice-ret-2hzqkc88am'] == \"share\"",
-          "node": "data_export"
-        },
-        {
-          "caption": "On failure",
-          "condition": "true",
-          "node": ""
-        }
-      ],
-      "onEnter": null,
-      "onReceive": null
-    },
     {
       "id": "cd8c59b6c3",
       "name": "data_export",
       "next": [
         {
           "condition": "true",
-          "node": "choice-0146e0"
+          "node": "node-2fa9"
         }
       ],
       "onEnter": [
@@ -70,7 +52,7 @@
       "next": [
         {
           "condition": "true",
-          "node": "choice-0146e0"
+          "node": ""
         }
       ],
       "onEnter": [
@@ -131,11 +113,30 @@
       "next": [
         {
           "condition": "true",
-          "node": "choice-0146e0"
+          "node": "node-2fa9"
         }
       ],
       "onEnter": [
         "say #!builtin_text-t_eVT-"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "dce5ebebaa",
+      "name": "node-2fa9",
+      "next": [
+        {
+          "condition": "true",
+          "node": "Dataset.flow.json"
+        },
+        {
+          "condition": "true",
+          "node": "data_export"
+        }
+      ],
+      "onEnter": [
+        "say #!dropdown-B6Fkrw"
       ],
       "onReceive": null,
       "type": "standard"

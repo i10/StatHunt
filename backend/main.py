@@ -24,7 +24,6 @@ data = {}
 chat_overwrite = True
 update = {}
 
-
 def id_validation(user_id):
     if user_id not in data.keys():
         data[user_id] = {}
@@ -37,6 +36,38 @@ def id_validation(user_id):
             'iv': [],
             'dv': [],
         }
+
+# User Validation
+
+@app.get("/uid")
+async def new_id():
+    user_id = str(uuid.uuid1())
+    data[user_id] = {}
+    update[user_id] = True
+    data[user_id]['design'] = {
+        'hypothesis': "",
+        'goal_of_analysis': "",
+        'procedure': "",
+        'sample_size': "",
+        'exp_design': "",
+        'iv': [],
+        'dv': [],
+    }
+    print("New user_id " + (user_id) + " generated")
+    return {"user_id": (user_id)}
+
+# Misc
+@app.post("/setview/{user_id}")
+async def set_view(user_id: str, view: int):
+    print("New view for: " + user_id + ' is ' + str(view))
+    data[user_id]['view'] = view
+
+@app.get("/getview/{user_id}")
+async def get_view(user_id: str):
+    try:
+        return data[user_id]['view']
+    except:
+        return  0
 
 # Dataset
 @app.post("/uploadfile/{user_id}")
@@ -56,12 +87,47 @@ async def get_dataframe(user_id: str):
     except:
         return ''
 
-
+## Value Obfuscation
 @app.post("/dataset/obfuscate/{user_id}")
 async def obf_data(user_id: str, column: str):
+    df = data[user_id]['dataframe']
+    print(df[column])
+    if(column not in df.columns):
+        return 'Not a valid column'
     laplace = Laplace()
-    laplace.set_epsilon(2)
-    laplace.set_sensitivity(20)
+    if df[column].dtype == 'int64':
+        laplace.set_epsilon(1)
+        laplace.set_sensitivity(df[column].mean()*0.1)
+        df[column] = df[column].apply(laplace.randomise).round(0).astype(int)
+    elif df[column].dtype == 'float64':
+        laplace.set_epsilon(1)
+        laplace.set_sensitivity(df[column].mean()*0.1)
+        df[column] = df[column].apply(laplace.randomise)
+    print(df[column])
+    return 'Column has been obfuscated'
+
+## Variable Obfuscation
+@app.get("/dataset/column/{user_id}")
+async def get_column(user_id: str, column: str):
+    if column in data[user_id]['dataframe'].columns:
+        return {'values': data[user_id]['dataframe'][column].unique().tolist()}
+    return {'error': "Not a valid column"}
+
+class ObDat(BaseModel):
+    column: str
+    ncolumn: str
+    values: List[str]
+
+@app.post("/dataset/rcolumn/{user_id}")
+async def obf_column(user_id: str, info: ObDat):
+    old_values = data[user_id]['dataframe'][info.column].unique()
+    mapping = {}
+    for i in range(len(info.values)):
+        mapping[old_values[i]] = info.values[i]
+    
+    data[user_id]['dataframe'][info.column] = data[user_id]['dataframe'][info.column].map(mapping)
+    data[user_id]['dataframe'] = data[user_id]['dataframe'].rename(columns={info.column: info.ncolumn})
+    print(data[user_id]['dataframe'][info.ncolumn])
 
 
 @app.get("/update/{user_id}")
@@ -74,26 +140,8 @@ async def updated(user_id: str):
     return False
 
 
-@app.get("/uid")
-async def new_id():
-    user_id = str(uuid.uuid1())
-    data[user_id] = {}
-    update[user_id] = True
-    data[user_id]['design'] = {
-        'hypothesis': "",
-        'goal_of_analysis': "",
-        'procedure': "",
-        'sample_size': "",
-        'exp_design': "",
-        'iv': [],
-        'dv': [],
-    }
-    print("New user_id " + (user_id) + " generated")
-    return {"user_id": (user_id)}
-
 
 # Experimental Design
-
 @app.get("/exp_design/{user_id}")
 async def get_design(user_id: str):
     id_validation(user_id)

@@ -343,5 +343,104 @@
     "createdBy": "admin",
     "createdOn": "2020-05-22T09:53:09.033Z",
     "modifiedOn": "2020-05-22T09:53:09.033Z"
+  },
+  {
+    "id": "builtin_text-idsC_8",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Would you like to obfuscate values or variables?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-23T06:35:12.795Z",
+    "modifiedOn": "2020-05-23T06:35:12.795Z"
+  },
+  {
+    "id": "builtin_text-Mg8Wbi",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Which variable would you like to obfuscate? \n(Please provide the name of the column the variable is in)"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-23T06:38:01.784Z",
+    "modifiedOn": "2020-05-24T08:11:45.885Z"
+  },
+  {
+    "id": "builtin_text-bGPf43",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Then let's move on to posting your question!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-23T07:07:50.156Z",
+    "modifiedOn": "2020-05-23T07:07:50.156Z"
+  },
+  {
+    "id": "builtin_text-ffNhRj",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What would you like to replace {{temp.column_name}} with?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:12:59.651Z",
+    "modifiedOn": "2020-05-24T10:18:23.131Z"
+  },
+  {
+    "id": "builtin_text--zPWtr",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What do you want to replace {{temp.curr_val}} with?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:14:05.257Z",
+    "modifiedOn": "2020-05-25T07:49:30.350Z"
+  },
+  {
+    "id": "builtin_text-2RIGKQ",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Done!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:15:18.049Z",
+    "modifiedOn": "2020-05-24T08:21:57.612Z"
+  },
+  {
+    "id": "builtin_text-0OVmWM",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Done! You should be able to see the changes in the table. "
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:21:01.687Z",
+    "modifiedOn": "2020-05-24T08:21:01.687Z"
+  },
+  {
+    "id": "builtin_text-UFMukS",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Please pick one of the options!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:47:45.394Z",
+    "modifiedOn": "2020-05-24T08:47:45.394Z"
+  },
+  {
+    "id": "builtin_text-OXpFwL",
+    "formData": {
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "Done!"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-25T07:51:20.638Z",
+    "modifiedOn": "2020-05-25T07:51:20.638Z"
   }
 ]

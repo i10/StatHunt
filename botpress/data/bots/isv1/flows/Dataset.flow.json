@@ -1,39 +1,33 @@
 {
   "version": "0.0.1",
-  "catchAll": {},
-  "startNode": "entry",
+  "catchAll": {
+    "onReceive": [],
+    "next": [
+      {
+        "condition": "event.preview == '/back'",
+        "node": "Menu.flow.json"
+      }
+    ]
+  },
+  "startNode": "node-b447",
   "description": "",
   "nodes": [
-    {
-      "id": "91054bb8e3",
-      "name": "entry",
-      "next": [
-        {
-          "condition": "true",
-          "node": "node-b447"
-        }
-      ],
-      "onEnter": [
-        "say #!builtin_text-wQSwHx"
-      ],
-      "onReceive": null,
-      "type": "standard"
-    },
     {
       "id": "a3ba186a30",
       "name": "node-b447",
       "next": [
         {
           "condition": "true",
-          "node": "node-9bf3"
+          "node": "node-0164"
         },
         {
           "condition": "true",
-          "node": "node-0164"
+          "node": "node-9bf3"
         }
       ],
       "onEnter": [
-        "say #!builtin_text-qWrSVE"
+        "say #!builtin_text-qWrSVE",
+        "setView {\"view\":\"1\"}"
       ],
       "onReceive": [],
       "type": "standard"
@@ -56,8 +50,141 @@
     {
       "id": "83f65de420",
       "name": "node-0164",
-      "next": [],
+      "next": [
+        {
+          "condition": "event.preview == \"Value Obfuscation\"",
+          "node": "node-861c"
+        },
+        {
+          "condition": "event.preview === 'Variable Obfuscation'",
+          "node": "node-0f25"
+        },
+        {
+          "condition": "true",
+          "node": "node-bd80"
+        }
+      ],
+      "onEnter": [
+        "say #!dropdown-IV81a4"
+      ],
+      "onReceive": [],
+      "type": "standard"
+    },
+    {
+      "id": "0150095f67",
+      "name": "node-861c",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-0164"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-Mg8Wbi"
+      ],
+      "onReceive": [
+        "dataset/val_obfuscation {\"column\":\"{{event.preview}}\"}",
+        "say #!builtin_text-0OVmWM"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "c37314e378",
+      "name": "node-0f25",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-f860"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-Mg8Wbi"
+      ],
+      "onReceive": [
+        "dataset/saveColumn {\"column\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "e4bc9a496e",
+      "name": "node-bd80",
+      "next": [
+        {
+          "condition": "true",
+          "node": "Question-Generation.flow.json"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-bGPf43",
+        "setView {\"view\":\"2\"}"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "c803a0d199",
+      "name": "node-f860",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-7c15"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-ffNhRj"
+      ],
+      "onReceive": [
+        "dataset/renameVal {\"title\":\"true\",\"new_name\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "64cf7aa73e",
+      "name": "node-7c15",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-dffb"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text--zPWtr"
+      ],
+      "onReceive": [
+        "dataset/renameVal {\"title\":\"false\",\"new_name\":\"{{event.preview}}\"}"
+      ],
+      "type": "standard"
+    },
+    {
+      "id": "f691898750",
+      "name": "node-dffb",
+      "next": [
+        {
+          "condition": "temp.renaming === true",
+          "node": "node-7c15"
+        },
+        {
+          "condition": "true",
+          "node": "node-d3ff"
+        }
+      ],
       "onEnter": [],
+      "onReceive": null,
+      "type": "standard"
+    },
+    {
+      "id": "152aa2b6bd",
+      "name": "node-d3ff",
+      "next": [
+        {
+          "condition": "true",
+          "node": "node-0164"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-OXpFwL",
+        "dataset/obfValues {}"
+      ],
       "onReceive": null,
       "type": "standard"
     }

@@ -38,6 +38,10 @@
         {
           "title": "Help",
           "value": "help"
+        },
+        {
+          "title": "Done",
+          "value": "done"
         }
       ],
       "markdown$en": true,
@@ -46,7 +50,7 @@
     },
     "createdBy": "admin",
     "createdOn": "2020-04-06T11:04:37.139Z",
-    "modifiedOn": "2020-04-08T12:25:20.724Z"
+    "modifiedOn": "2020-05-24T08:16:34.410Z"
   },
   {
     "id": "builtin_single-choice-8EiSw-",
@@ -85,5 +89,30 @@
     "createdBy": "admin",
     "createdOn": "2020-04-21T11:41:00.283Z",
     "modifiedOn": "2020-04-21T15:00:29.048Z"
+  },
+  {
+    "id": "builtin_single-choice-N4u2j1",
+    "formData": {
+      "choices$en": [
+        {
+          "title": "Experiment Design",
+          "value": "experiment_design"
+        },
+        {
+          "title": "Dataset",
+          "value": "dataset"
+        },
+        {
+          "title": "Question Posting",
+          "value": "question"
+        }
+      ],
+      "markdown$en": true,
+      "typing$en": true,
+      "text$en": "What would you like to do?"
+    },
+    "createdBy": "admin",
+    "createdOn": "2020-05-24T08:43:22.079Z",
+    "modifiedOn": "2020-05-24T08:43:22.079Z"
   }
 ]

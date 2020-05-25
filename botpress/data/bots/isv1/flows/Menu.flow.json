@@ -1,0 +1,55 @@
+{
+  "version": "0.0.1",
+  "catchAll": {},
+  "startNode": "move",
+  "triggers": [],
+  "description": "",
+  "nodes": [
+    {
+      "id": "skill-8a191c",
+      "type": "skill-call",
+      "skill": "choice",
+      "name": "move",
+      "flow": "skills/choice-8a191c.flow.json",
+      "next": [
+        {
+          "caption": "User picked [experim...]",
+          "condition": "temp['skill-choice-ret-9054o6zv5v'] == \"experiment_design\"",
+          "node": "Experimental-Design.flow.json"
+        },
+        {
+          "caption": "User picked [dataset]",
+          "condition": "temp['skill-choice-ret-9054o6zv5v'] == \"dataset\"",
+          "node": "Dataset.flow.json"
+        },
+        {
+          "caption": "User picked [question]",
+          "condition": "temp['skill-choice-ret-9054o6zv5v'] == \"question\"",
+          "node": "Question-Generation.flow.json"
+        },
+        {
+          "caption": "On failure",
+          "condition": "true",
+          "node": "node-9f91"
+        }
+      ],
+      "onEnter": null,
+      "onReceive": null
+    },
+    {
+      "id": "35d313cb7f",
+      "name": "node-9f91",
+      "next": [
+        {
+          "condition": "true",
+          "node": "move"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-UFMukS"
+      ],
+      "onReceive": null,
+      "type": "standard"
+    }
+  ]
+}

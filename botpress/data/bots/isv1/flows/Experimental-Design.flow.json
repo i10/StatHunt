@@ -2,7 +2,12 @@
   "version": "0.0.1",
   "catchAll": {
     "onReceive": [],
-    "next": []
+    "next": [
+      {
+        "condition": "event.preview == '/back'",
+        "node": "Menu.flow.json"
+      }
+    ]
   },
   "startNode": "input_list",
   "nodes": [
@@ -16,7 +21,7 @@
         {
           "caption": "User picked [start]",
           "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"start\"",
-          "node": "Linear-Walkthrough.flow.json"
+          "node": "analysis_goal"
         },
         {
           "caption": "User picked [goal_of...]",
@@ -59,9 +64,14 @@
           "node": ""
         },
         {
+          "caption": "User picked [done]",
+          "condition": "temp['skill-choice-ret-1dx1rq8pz2'] == \"done\"",
+          "node": "Dataset.flow.json"
+        },
+        {
           "caption": "On failure",
           "condition": "true",
-          "node": ""
+          "node": "node-b0e9"
         }
       ],
       "onEnter": null,
@@ -337,6 +347,21 @@
       "onReceive": [
         "saveVar {\"type\":\"sample_size\",\"value\":\"{{event.preview}}\"}"
       ],
+      "type": "standard"
+    },
+    {
+      "id": "4e81fffa54",
+      "name": "node-b0e9",
+      "next": [
+        {
+          "condition": "true",
+          "node": "input_list"
+        }
+      ],
+      "onEnter": [
+        "say #!builtin_text-UFMukS"
+      ],
+      "onReceive": null,
       "type": "standard"
     }
   ]

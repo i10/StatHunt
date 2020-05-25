@@ -28,16 +28,34 @@ export default class App extends Component {
       console.log("User id found " + localStorage.uid)
     }
 
-
     window.botpressWebChat.init({
       host: 'http://localhost:3000',
       botId: 'isv1',
-      userId: localStorage.uid
+      userId: localStorage.uid,
+      // extraStylesheet: '/assets/modules/channel-web/chat.css',
+      enableReset: false,
+      enableTranscriptDownload: false,
+      showConversationsButton: false
     })
+    window.viewUpdate = setInterval(() => {
+      fetch("http://localhost:8000/getview/" + localStorage.uid)
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          this.setState({ view: response })
+        });
+    }, 1000)
+
+    setTimeout(()=>{window.botpressWebChat.sendEvent({ type: 'show' })}, 3000)
   }
 
   viewChange(event, newValue) {
     console.log("View set to: " + newValue)
+    fetch('http://localhost:8000/setview/' + localStorage.uid + "?view=" + newValue, {
+      method: 'POST',
+      body: {},
+    })
     this.setState({ view: newValue })
   }
 
@@ -52,6 +70,7 @@ export default class App extends Component {
         },
       }
     })
+
     return <Fragment>
       <ThemeProvider theme={theme}>
         <AppBar color='secondary' position="fixed">
@@ -76,7 +95,7 @@ export default class App extends Component {
         <div hidden={this.state.view !== 1}>
           <Grid container style={{ height: '100%' }}>
             <Grid item sm={8}>
-              <DataContainer hidden={this.state.view !== 1}/>
+              <DataContainer hidden={this.state.view !== 1} />
             </Grid>
             <Grid item sm={4} />
           </Grid>
