@@ -16,7 +16,7 @@ export default class App extends Component {
 
   componentDidMount() {
     if (localStorage.uid == null) {
-      fetch("http://78.46.171.75:8000/uid")
+      fetch("http://localhost:8000/uid")
         .then((response) => {
           return response.json();
         })
@@ -27,18 +27,19 @@ export default class App extends Component {
     } else {
       console.log("User id found " + localStorage.uid)
     }
-
+    
     window.botpressWebChat.init({
-      host: 'http://78.46.171.75:3000',
+      host: 'http://localhost:3000',
       botId: 'isv1',
       userId: localStorage.uid,
-      // extraStylesheet: '/assets/modules/http://localhost:3000/assets/modules/channel-web/inject.jschannel-web/chat.css',
+      extraStylesheet: 'http://localhost:3000/assets/modules/channel-web/chat.css',
       enableReset: false,
       enableTranscriptDownload: false,
-      showConversationsButton: false
+      showConversationsButton: false,
+      showBotAvatar: false
     })
     window.viewUpdate = setInterval(() => {
-      fetch("http://78.46.171.75:8000/getview/" + localStorage.uid)
+      fetch("http://localhost:8000/getview/" + localStorage.uid)
         .then((response) => {
           return response.json();
         })
@@ -52,7 +53,7 @@ export default class App extends Component {
 
   viewChange(event, newValue) {
     console.log("View set to: " + newValue)
-    fetch('http://78.46.171.75:8000/setview/' + localStorage.uid + "?view=" + newValue, {
+    fetch('http://localhost:8000/setview/' + localStorage.uid + "?view=" + newValue, {
       method: 'POST',
       body: {},
     })
@@ -94,10 +95,10 @@ export default class App extends Component {
         </div>
         <div hidden={this.state.view !== 1}>
           <Grid container style={{ height: '100%' }}>
-            <Grid item sm={8}>
+            <Grid item sm={10}>
               <DataContainer hidden={this.state.view !== 1} />
             </Grid>
-            <Grid item sm={4} />
+            <Grid item sm={2} />
           </Grid>
         </div>
         <div hidden={this.state.view !== 2}>

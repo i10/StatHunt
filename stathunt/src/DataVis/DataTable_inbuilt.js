@@ -58,7 +58,7 @@ export default function DataTable() {
   // })()
 
   const updateData = () => {
-    fetch("http://78.46.171.75:8000/dataset/" + localStorage.uid)
+    fetch("http://localhost:8000/dataset/" + localStorage.uid)
       .then((response) => {
         return response.json();
       })

@@ -9,7 +9,7 @@
 const axios = require('axios');
 
 const saveColumn = async (column) => {
-    axios.get('http://78.46.171.75:8000/dataset/column/' + event.target, {
+    axios.get('localhost:8000/dataset/column/' + event.target, {
         params: {
             'column': column
         }

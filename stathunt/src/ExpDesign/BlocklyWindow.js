@@ -17,7 +17,7 @@ export default class BlocklyWindow extends Component {
   }
 
   componentDidMount() {
-    fetch("http://78.46.171.75:8000/exp_design/" + localStorage.uid)
+    fetch("http://localhost:8000/exp_design/" + localStorage.uid)
             .then((response) => {
               return response.json()
             })
@@ -39,13 +39,13 @@ export default class BlocklyWindow extends Component {
     if(this.props.hidden){
       return
     }
-    fetch("http://78.46.171.75:8000/update/" + localStorage.uid)
+    fetch("http://localhost:8000/update/" + localStorage.uid)
       .then((response) => {
         return response.json()
       })
       .then((response) => {
         if (response) {
-          fetch("http://78.46.171.75:8000/exp_design/" + localStorage.uid)
+          fetch("http://localhost:8000/exp_design/" + localStorage.uid)
             .then((response) => {
               return response.json()
             })
@@ -104,7 +104,7 @@ export default class BlocklyWindow extends Component {
     }
     data['iv'] = iv
     this.data = data
-    fetch('http://78.46.171.75:8000/post_design/' + localStorage.uid, {
+    fetch('http://localhost:8000/post_design/' + localStorage.uid, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

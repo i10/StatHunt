@@ -10,7 +10,7 @@
 const axios = require('axios');
 
 const val_obfuscation = async (column) => {
-    axios.post('http://78.46.171.75:8000/dataset/obfuscate/' + event.target, null, {
+    axios.post('localhost:8000/dataset/obfuscate/' + event.target, null, {
         params: {
             'column': column
         }
